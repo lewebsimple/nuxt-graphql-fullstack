@@ -1,0 +1,41 @@
+{
+  "name": "@lewebsimple/nuxt-graphql-fullstack",
+  "description": "Nuxt 3 GraphQL Fullstack Starter",
+  "version": "0.1.1",
+  "author": "Pascal Martineau <pascal@lewebsimple.ca>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lewebsimple/nuxt-graphql-fullstack.git"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
+    "prepare": "husky install && nuxt prepare",
+    "release": "pnpm lint && changelogen --release --push"
+  },
+  "devDependencies": {
+    "@lewebsimple/eslint-config": "^0.7.9",
+    "@lewebsimple/stylelint-config": "^0.7.9",
+    "@nuxt/devtools": "latest",
+    "@types/node": "^20.4.1",
+    "changelogen": "^0.5.4",
+    "eslint": "^8.44.0",
+    "husky": "^8.0.3",
+    "nano-staged": "^0.8.0",
+    "nuxt": "^3.6.2",
+    "stylelint": "^15.10.1",
+    "vue-tsc": "^1.8.4"
+  },
+  "eslintConfig": {
+    "extends": "@lewebsimple/eslint-config"
+  },
+  "stylelint": {
+    "extends": "@lewebsimple/stylelint-config"
+  },
+  "nano-staged": {
+    "*.{js,ts,vue}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix"
+  }
+}
