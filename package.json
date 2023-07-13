@@ -12,14 +12,20 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
-    "prepare": "husky install && nuxt prepare",
+    "prepare": "husky install && prisma generate && nuxt prepare",
     "release": "pnpm lint && changelogen --release --push"
   },
+  "prisma": {
+    "schema": "server/prisma/schema.prisma"
+  },
   "dependencies": {
+    "@lucia-auth/adapter-prisma": "^3.0.0-beta.5",
     "@pothos/core": "^3.30.0",
+    "@prisma/client": "^4.16.2",
     "@urql/vue": "^1.1.2",
     "graphql": "^16.7.1",
-    "graphql-yoga": "^4.0.3"
+    "graphql-yoga": "^4.0.3",
+    "lucia": "^2.0.0-beta.5"
   },
   "devDependencies": {
     "@lewebsimple/eslint-config": "^0.7.9",
@@ -31,6 +37,7 @@
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
     "nuxt": "^3.6.2",
+    "prisma": "^4.16.2",
     "stylelint": "^15.10.1",
     "vue-tsc": "^1.8.4"
   },
