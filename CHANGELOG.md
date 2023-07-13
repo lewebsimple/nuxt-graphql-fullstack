@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.1.3
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.2...v0.1.3)
+
+### 🚀 Enhancements
+
+- Initial Lucia authentication setup ([c85e6f4](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/c85e6f4))
+- UseAuth composable / reactive session state ([9bc670a](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/9bc670a))
+- GraphQL authorization with @pothos/plugin-scope-auth ([ef4a060](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ef4a060))
+- GraphQL code generation ([80a984e](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/80a984e))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.2
 
 
