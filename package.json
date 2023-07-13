@@ -15,6 +15,11 @@
     "prepare": "husky install && nuxt prepare",
     "release": "pnpm lint && changelogen --release --push"
   },
+  "dependencies": {
+    "@pothos/core": "^3.30.0",
+    "graphql": "^16.7.1",
+    "graphql-yoga": "^4.0.3"
+  },
   "devDependencies": {
     "@lewebsimple/eslint-config": "^0.7.9",
     "@lewebsimple/stylelint-config": "^0.7.9",
