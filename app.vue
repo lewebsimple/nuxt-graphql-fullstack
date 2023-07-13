@@ -1,5 +1,10 @@
+<script setup lang="ts">
+const { siteName } = useRuntimeConfig().public;
+useHead({ titleTemplate: (title) => (title ? `${title} | ${siteName}` : siteName) });
+</script>
+
 <template>
-  <div>
-    <NuxtWelcome />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
