@@ -11,6 +11,9 @@ dependencies:
   '@pothos/core':
     specifier: ^3.30.0
     version: 3.30.0(graphql@16.7.1)
+  '@pothos/plugin-scope-auth':
+    specifier: ^3.19.2
+    version: 3.19.2(@pothos/core@3.30.0)(graphql@16.7.1)
   '@prisma/client':
     specifier: ^4.16.2
     version: 4.16.2(prisma@4.16.2)
@@ -1490,6 +1493,16 @@ packages:
     peerDependencies:
       graphql: '>=15.1.0'
     dependencies:
+      graphql: 16.7.1
+    dev: false
+
+  /@pothos/plugin-scope-auth@3.19.2(@pothos/core@3.30.0)(graphql@16.7.1):
+    resolution: {integrity: sha512-S+jz6sRt4LkRf3wYhq9/H4bu5OiMFoFub1HJRNgkdx9zzIQia20D+SXFlMcQluuOytVmaFXiz2gUYmY3hCQKQw==}
+    peerDependencies:
+      '@pothos/core': '*'
+      graphql: '>=15.1.0'
+    dependencies:
+      '@pothos/core': 3.30.0(graphql@16.7.1)
       graphql: 16.7.1
     dev: false
 
