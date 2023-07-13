@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
   const { email, password } = (await readBody<{ email: string; password: string }>(event)) ?? {};
-  if (!email || !password) return { error: "Missing email / passowrd" };
+  if (!email || !password) throw new Error("AUTH_SIGNUP_MISSING_EMAIL_PASSWORD");
   try {
     const user = await auth.createUser({
       key: {
@@ -16,9 +16,9 @@ export default defineEventHandler(async (event) => {
     });
     const authRequest = auth.handleRequest(event);
     authRequest.setSession(session);
-    return null;
+    return { session, error: null };
   } catch (error) {
     console.log(error);
-    return { error: "Signup failed" };
+    return { session: null, error: "Signup failed" };
   }
 });

@@ -3,9 +3,9 @@ export default defineEventHandler(async (event) => {
   const session = await authRequest.validate();
   if (!session) {
     setResponseStatus(event, 401);
-    return { error: "Unauthorized" };
+    return { session: null, error: "AUTH_LOGOUT_UNAUTHORIZED" };
   }
   await auth.invalidateSession(session.sessionId);
   authRequest.setSession(null);
-  return null;
+  return { session: null, error: null };
 });
