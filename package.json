@@ -12,8 +12,9 @@
     "build": "nuxt build",
     "codegen": "graphql-codegen",
     "dev": "run-p dev:*",
-    "dev:nuxt": "nuxt dev",
+    "dev:nuxt": "nuxt dev --no-clear",
     "dev:codegen": "graphql-codegen -w",
+    "dev:prisma": "prisma generate --watch",
     "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
     "prepare": "husky install && prisma generate && pnpm codegen && nuxt prepare && pnpm lint",
     "release": "pnpm lint && changelogen --release --push"
