@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.1.4
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.3...v0.1.4)
+
+### 🚀 Enhancements
+
+- Initial frontend with @nuxthq/ui ([0f27756](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/0f27756))
+- Login / signup / logout pages ([449ffa5](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/449ffa5))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.3
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.2...v0.1.3)
