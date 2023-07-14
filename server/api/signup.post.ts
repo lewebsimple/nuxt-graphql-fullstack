@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     authRequest.setSession(session);
     return { session, error: null };
   } catch (error) {
-    console.log(error);
+    //console.error(error);
     return { session: null, error: "Signup failed" };
   }
 });

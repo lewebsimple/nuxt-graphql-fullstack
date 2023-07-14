@@ -30,9 +30,12 @@
     "@pothos/plugin-scope-auth": "^3.19.2",
     "@prisma/client": "^4.16.2",
     "@urql/vue": "^1.1.2",
+    "@vorms/core": "^1.1.0",
+    "@vorms/resolvers": "^1.1.0",
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.3",
-    "lucia": "^2.0.0-beta.5"
+    "lucia": "^2.0.0-beta.5",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^4.0.1",
