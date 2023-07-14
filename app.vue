@@ -4,7 +4,9 @@ useHead({ titleTemplate: (title) => (title ? `${title} | ${siteName}` : siteName
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <Body class="antialiased font-sans text-gray-700 bg-white">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </Body>
 </template>

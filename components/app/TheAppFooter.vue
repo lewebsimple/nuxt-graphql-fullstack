@@ -11,9 +11,11 @@ const { data } = await useQuery({
 </script>
 
 <template>
-  <footer>
-    <div v-if="data?.version" class="version">
-      {{ data.version }}
+  <footer class="py-1 bg-gray-100">
+    <div class="container flex items-center justify-end">
+      <div v-if="data?.version" class="text-sm">
+        {{ data.version }}
+      </div>
     </div>
   </footer>
 </template>

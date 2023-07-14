@@ -3,9 +3,13 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@urql/vue"],
   },
-  components: [{ path: "~/components", pathPrefix: false }],
+  components: [
+    { path: "~/components", pathPrefix: false },
+    { path: "~/assets/svg", extensions: ["svg"], prefix: "svg" },
+  ],
   devtools: { enabled: true },
   imports: { dirs: ["composables/generated"] },
+  modules: ["@lewebsimple/nuxt3-svg", "@nuxthq/ui"],
   runtimeConfig: {
     public: {
       graphql: {
@@ -14,5 +18,6 @@ export default defineNuxtConfig({
       siteName: "Nuxt 3 GraphQL Fullstack Starter",
     },
   },
+  tailwindcss: { viewer: false },
   typescript: { typeCheck: true },
 });

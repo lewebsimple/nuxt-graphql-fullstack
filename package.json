@@ -23,7 +23,9 @@
     "schema": "server/prisma/schema.prisma"
   },
   "dependencies": {
+    "@lewebsimple/nuxt3-svg": "^0.2.2",
     "@lucia-auth/adapter-prisma": "^3.0.0-beta.5",
+    "@nuxthq/ui": "^2.5.0",
     "@pothos/core": "^3.30.0",
     "@pothos/plugin-scope-auth": "^3.19.2",
     "@prisma/client": "^4.16.2",
