@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.1.5
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.4...v0.1.5)
+
+### 🩹 Fixes
+
+- Pass-through headers to urql client for SSR ([721baa9](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/721baa9))
+
+### 💅 Refactors
+
+- Prefix models with Auth ([4f0439e](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/4f0439e))
+
+### 🏡 Chore
+
+- Update dependencies ([3d3399c](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/3d3399c))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.4
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.3...v0.1.4)
