@@ -24,6 +24,7 @@ export type Mutation = {
 
 export type Query = {
   __typename?: 'Query';
+  secret: Scalars['String']['output'];
   /** Current application version */
   version: Scalars['String']['output'];
 };
