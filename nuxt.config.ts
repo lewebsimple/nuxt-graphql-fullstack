@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@urql/vue"],
   },
+  colorMode: { preference: "light" },
   components: [
     { path: "~/components", pathPrefix: false },
     { path: "~/assets/svg", extensions: ["svg"], prefix: "svg" },
