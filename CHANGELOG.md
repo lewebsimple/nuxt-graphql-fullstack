@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.1.6
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.5...v0.1.6)
+
+### 🚀 Enhancements
+
+- Initial @pothos/plugin-prisma setup ([1541400](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/1541400))
+- AuthUser Prisma object type ([ee1726c](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ee1726c))
+- Relay integration and authUsers query ([5c2f110](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/5c2f110))
+
+### 🏡 Chore
+
+- Update dependencies ([ed7e026](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ed7e026))
+- Update dependencies ([74a481d](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/74a481d))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.5
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.4...v0.1.5)
