@@ -1,11 +1,22 @@
 import { builder } from "../builder";
 
 export const user = () => {
-  // AuthUser Prisma object
-  builder.prismaObject("AuthUser", {
+  // AuthUser Prisma node
+  builder.prismaNode("AuthUser", {
+    id: { field: "id" },
     fields: (t) => ({
-      id: t.exposeID("id"),
       email: t.exposeString("email"),
     }),
   });
+
+  // authUsers query
+  builder.queryField("authUsers", (t) =>
+    t.prismaConnection({
+      type: "AuthUser",
+      cursor: "id",
+      defaultSize: 2,
+      totalCount: () => prisma.authUser.count(),
+      resolve: (query, _root, _args, { prisma }) => prisma.authUser.findMany({ ...query }),
+    }),
+  );
 };
