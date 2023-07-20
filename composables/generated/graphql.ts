@@ -16,6 +16,12 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type AuthUser = {
+  __typename?: 'AuthUser';
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Dummy mutation */
