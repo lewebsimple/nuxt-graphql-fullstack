@@ -2,10 +2,10 @@
 /// <reference types="lucia" />
 declare namespace Lucia {
   type Auth = import("./utils/auth.ts").Auth;
-  type UserAttributes = {
+  type DatabaseUserAttributes = {
     email: string;
   };
-  type UserSession = {
+  type DatabaseSessionAttributes = {
     created_at: Date;
   };
 }

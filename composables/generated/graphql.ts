@@ -71,6 +71,7 @@ export type QueryAuthUsersConnection = {
   __typename?: 'QueryAuthUsersConnection';
   edges: Array<Maybe<QueryAuthUsersConnectionEdge>>;
   pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type QueryAuthUsersConnectionEdge = {

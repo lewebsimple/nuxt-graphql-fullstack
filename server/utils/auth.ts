@@ -4,12 +4,9 @@ import { h3 } from "lucia/middleware";
 
 export const auth = lucia({
   adapter: prismaAdapter(prisma, {
-    modelNames: {
-      user: "authUser",
-      key: "authKey",
-      session: "authSession",
-    },
-    userRelationKey: "user",
+    user: "authUser",
+    key: "authKey",
+    session: "authSession",
   }),
   env: process.dev ? "DEV" : "PROD",
   middleware: h3(),
@@ -17,7 +14,7 @@ export const auth = lucia({
     email: data.email,
   }),
   getSessionAttributes: (data) => ({
-    createdAt: data.createdAt,
+    created_at: data.created_at,
   }),
 });
 

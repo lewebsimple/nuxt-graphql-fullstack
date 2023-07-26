@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
   if (!email || !password) throw new Error("AUTH_LOGIN_MISSING_EMAIL_PASSWORD");
   try {
     const authRequest = auth.handleRequest(event);
-    const key = await auth.useKey("email", email, password);
+    const key = await auth.useKey("email", email.toLowerCase(), password);
     const session = await auth.createSession({
       userId: key.userId,
       attributes: { created_at: new Date() },

@@ -3,7 +3,7 @@ import { type Session } from "lucia";
 export function useAuth() {
   const session = useState<Session | null>("session", () => null);
 
-  const isAuthenticated = computed(() => !!session.value);
+  const isAuthenticated = computed(() => !!session.value?.user);
 
   async function login(body: { email: string; password: string }) {
     const { session: newSession, error } = await $fetch("/api/login", { method: "POST", body });

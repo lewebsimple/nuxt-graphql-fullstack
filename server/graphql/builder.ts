@@ -19,7 +19,7 @@ export const builder = new SchemaBuilder<{
 }>({
   plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin],
   authScopes: async (context) => ({
-    isAuthenticated: !!context.session,
+    isAuthenticated: !!context.session?.user,
   }),
   prisma: {
     client: prisma,

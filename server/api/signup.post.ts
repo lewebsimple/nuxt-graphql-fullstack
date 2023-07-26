@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
     const user = await auth.createUser({
       key: {
         providerId: "email",
-        providerUserId: email,
+        providerUserId: email.toLowerCase(),
         password,
       },
       attributes: { email },
