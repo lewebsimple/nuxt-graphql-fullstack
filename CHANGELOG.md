@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.7
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.6...v0.1.7)
+
+### 🚀 Enhancements
+
+- Upgrade to Lucia 2.0 ([68e9e7b](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/68e9e7b))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.6
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.5...v0.1.6)
