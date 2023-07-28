@@ -14,7 +14,6 @@ const config: IGraphQLConfig = {
           config: { avoidOptionals: true, useTypeImports: true },
         },
       },
-      ignoreNoDocuments: true,
     },
   },
 };
