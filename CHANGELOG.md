@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.1.8
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.7...v0.1.8)
+
+### 🩹 Fixes
+
+- AuthScopes on AuthUser ([e05feff](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/e05feff))
+- Urql client needs origin in headers for SSR ([09cb25b](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/09cb25b))
+- Removing ignoreNoDocuments solves unknown fragment ([2598fe8](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/2598fe8))
+
+### 💅 Refactors
+
+- Export individual Pothos types ([2c91bd7](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/2c91bd7))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.7
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.6...v0.1.7)

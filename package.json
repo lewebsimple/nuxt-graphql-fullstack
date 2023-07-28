@@ -1,7 +1,7 @@
 {
   "name": "@lewebsimple/nuxt-graphql-fullstack",
   "description": "Nuxt 3 GraphQL Fullstack Starter",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "Pascal Martineau <pascal@lewebsimple.ca>",
   "license": "MIT",
   "repository": {
