@@ -34,6 +34,7 @@
     "@urql/vue": "^1.1.2",
     "@vorms/core": "^1.1.0",
     "@vorms/resolvers": "^1.1.0",
+    "bullmq": "^4.6.3",
     "graphql": "^16.7.1",
     "graphql-yoga": "^4.0.3",
     "lucia": "^2.0.0",
