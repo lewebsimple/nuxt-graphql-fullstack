@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.1.9
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.8...v0.1.9)
+
+### 🚀 Enhancements
+
+- Background task processing with BullMQ ([f99260a](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/f99260a))
+
+### 🏡 Chore
+
+- Update deps ([45f55ed](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/45f55ed))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.8
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.7...v0.1.8)
