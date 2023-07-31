@@ -16,16 +16,68 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type AuthUser = Node & {
+  __typename?: 'AuthUser';
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Dummy mutation */
   ping: Scalars['String']['output'];
 };
 
+export type Node = {
+  id: Scalars['ID']['output'];
+};
+
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  endCursor: Maybe<Scalars['ID']['output']>;
+  hasNextPage: Scalars['Boolean']['output'];
+  hasPreviousPage: Scalars['Boolean']['output'];
+  startCursor: Maybe<Scalars['ID']['output']>;
+};
+
 export type Query = {
   __typename?: 'Query';
+  authUsers: QueryAuthUsersConnection;
+  node: Maybe<Node>;
+  nodes: Array<Maybe<Node>>;
   /** Current application version */
   version: Scalars['String']['output'];
+};
+
+
+export type QueryAuthUsersArgs = {
+  after: InputMaybe<Scalars['ID']['input']>;
+  before: InputMaybe<Scalars['ID']['input']>;
+  first: InputMaybe<Scalars['Int']['input']>;
+  last: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryNodeArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type QueryNodesArgs = {
+  ids: Array<Scalars['ID']['input']>;
+};
+
+export type QueryAuthUsersConnection = {
+  __typename?: 'QueryAuthUsersConnection';
+  edges: Array<Maybe<QueryAuthUsersConnectionEdge>>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type QueryAuthUsersConnectionEdge = {
+  __typename?: 'QueryAuthUsersConnectionEdge';
+  cursor: Scalars['ID']['output'];
+  node: AuthUser;
 };
 
 export type VersionQueryVariables = Exact<{ [key: string]: never; }>;
