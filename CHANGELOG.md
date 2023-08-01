@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.10
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.9...v0.1.10)
+
+### 🚀 Enhancements
+
+- Role based authorization ([cf532cc](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/cf532cc))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.9
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.8...v0.1.9)
