@@ -57,6 +57,6 @@ const passwordReveal = ref(false);
       </UInput>
     </UFormGroup>
     <UButton v-if="isRedirecting" block color="gray" variant="ghost" loading disabled>Redirecting...</UButton>
-    <UButton v-else block type="submit" :loading="isSubmitting">Login</UButton>
+    <UButton v-else block type="submit" :loading="isSubmitting">Sign up</UButton>
   </form>
 </template>
