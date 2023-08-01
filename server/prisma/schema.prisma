@@ -11,13 +11,20 @@ generator pothos {
   provider = "prisma-pothos-types"
 }
 
+enum AuthRole {
+  UNVERIFIED
+  VERIFIED
+  ADMINISTRATOR
+}
+
 model AuthUser {
   id String @id
 
   auth_session AuthSession[]
   auth_key     AuthKey[]
 
-  email String @unique
+  email String   @unique
+  role  AuthRole @default(UNVERIFIED)
 }
 
 model AuthSession {

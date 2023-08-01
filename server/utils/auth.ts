@@ -12,6 +12,7 @@ export const auth = lucia({
   middleware: h3(),
   getUserAttributes: (data) => ({
     email: data.email,
+    role: data.role,
   }),
   getSessionAttributes: (data) => ({
     created_at: data.created_at,

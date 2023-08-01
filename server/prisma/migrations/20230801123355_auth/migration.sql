@@ -2,6 +2,7 @@
 CREATE TABLE `AuthUser` (
     `id` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
+    `role` ENUM('UNVERIFIED', 'VERIFIED', 'ADMINISTRATOR') NOT NULL DEFAULT 'UNVERIFIED',
 
     UNIQUE INDEX `AuthUser_email_key`(`email`),
     PRIMARY KEY (`id`)

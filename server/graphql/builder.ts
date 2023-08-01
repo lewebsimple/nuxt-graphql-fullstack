@@ -4,7 +4,7 @@ import PrismaPlugin from "@pothos/plugin-prisma";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";
 import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
-import { Prisma } from "@prisma/client";
+import { AuthRole, Prisma } from "@prisma/client";
 
 import { prisma } from "../utils/prisma";
 import { type Context } from "./context";
@@ -13,6 +13,7 @@ import { type Context } from "./context";
 export const builder = new SchemaBuilder<{
   AuthScopes: {
     isAuthenticated: boolean;
+    hasAuthRole: AuthRole;
   };
   Context: Context;
   PrismaTypes: PrismaTypes;
@@ -20,6 +21,8 @@ export const builder = new SchemaBuilder<{
   plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin],
   authScopes: async (context) => ({
     isAuthenticated: !!context.session?.user,
+    hasAuthRole: (role: AuthRole) =>
+      context.session?.user ? [AuthRole.ADMINISTRATOR, role].includes(context.session.user.role) : false,
   }),
   prisma: {
     client: prisma,

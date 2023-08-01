@@ -17,6 +17,6 @@ export const authUsersQuery = builder.queryField("authUsers", (t) =>
     defaultSize: 2,
     totalCount: () => prisma.authUser.count(),
     resolve: (query, _root, _args, { prisma }) => prisma.authUser.findMany({ ...query }),
-    authScopes: { isAuthenticated: true },
+    authScopes: { hasAuthRole: "ADMINISTRATOR" },
   }),
 );
