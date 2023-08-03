@@ -1,7 +1,7 @@
 import { builder } from "../builder";
 
 // AuthUser Prisma node
-export const authUserPrismaNode = builder.prismaNode("AuthUser", {
+export const AuthUserPrismaNode = builder.prismaNode("AuthUser", {
   id: { field: "id" },
   fields: (t) => ({
     email: t.exposeString("email"),
@@ -10,13 +10,16 @@ export const authUserPrismaNode = builder.prismaNode("AuthUser", {
 });
 
 // authUsers query
-export const authUsersQuery = builder.queryField("authUsers", (t) =>
+export const AuthUsersQuery = builder.queryField("authUsers", (t) =>
   t.prismaConnection({
     type: "AuthUser",
     cursor: "id",
-    defaultSize: 2,
-    totalCount: () => prisma.authUser.count(),
-    resolve: (query, _root, _args, { prisma }) => prisma.authUser.findMany({ ...query }),
+    totalCount: async (_parent, _args, { prisma }) => {
+      return await prisma.authUser.count();
+    },
+    resolve: async (query, _root, _args, { prisma }) => {
+      return await prisma.authUser.findMany({ ...query });
+    },
     authScopes: { hasAuthRole: "ADMINISTRATOR" },
   }),
 );

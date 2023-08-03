@@ -44,6 +44,9 @@ dependencies:
   graphql:
     specifier: ^16.7.1
     version: 16.7.1
+  graphql-scalars:
+    specifier: ^1.22.2
+    version: 1.22.2(graphql@16.7.1)
   graphql-yoga:
     specifier: ^4.0.3
     version: 4.0.3(graphql@16.7.1)
@@ -69,7 +72,7 @@ devDependencies:
     version: 0.7.9(postcss@8.4.27)(stylelint@15.10.2)
   '@nuxt/devtools':
     specifier: latest
-    version: 0.7.2(nuxt@3.6.5)(vite@4.4.8)
+    version: 0.7.4(nuxt@3.6.5)(vite@4.4.8)
   '@parcel/watcher':
     specifier: ^2.2.0
     version: 2.2.0
@@ -1574,7 +1577,7 @@ packages:
     dependencies:
       graphql: 16.7.1
       lodash.sortby: 4.7.0
-      tslib: 2.5.3
+      tslib: 2.6.1
     dev: true
 
   /@graphql-tools/executor-graphql-ws@1.1.0(graphql@16.7.1):
@@ -1767,7 +1770,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.7.1
-      tslib: 2.5.3
+      tslib: 2.6.1
     dev: true
 
   /@graphql-tools/prisma-loader@8.0.1(@types/node@20.4.5)(graphql@16.7.1):
@@ -1812,7 +1815,7 @@ packages:
       '@ardatan/relay-compiler': 12.0.0(graphql@16.7.1)
       '@graphql-tools/utils': 10.0.4(graphql@16.7.1)
       graphql: 16.7.1
-      tslib: 2.5.3
+      tslib: 2.6.1
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -2249,8 +2252,8 @@ packages:
     resolution: {integrity: sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==}
     dev: true
 
-  /@nuxt/devtools-kit@0.7.2(nuxt@3.6.5)(vite@4.4.8):
-    resolution: {integrity: sha512-hY4GWWkEdY68V9YdUn5Cmdxc3IbBP1YPjPs5vkHw+MOv9exlg/KnElDcbNWeWsTKIvlptdimssdh7rXY8ytfgQ==}
+  /@nuxt/devtools-kit@0.7.4(nuxt@3.6.5)(vite@4.4.8):
+    resolution: {integrity: sha512-+CKSSqalyW3elK364FamcHtXm6F03Iarfs9ftBiWmj3CdCTuv9aGpJFi0FKzXKzq/xlCtbWvIrqcaf2Iy//6NQ==}
     peerDependencies:
       nuxt: ^3.6.5
       vite: '*'
@@ -2265,8 +2268,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/devtools-wizard@0.7.2:
-    resolution: {integrity: sha512-vq9QRq8NbvOiWtkOpVh6UjScYJhWJ44dedENCcVoXck1DUjd00EbNtdHOyMqF9xK4+lQpKz6JltPFdpP0CIMjg==}
+  /@nuxt/devtools-wizard@0.7.4:
+    resolution: {integrity: sha512-Ga+OgxTEZu0AnOmak5eMPrFThvLdoFVB5kEyyCrnBNdkTvX5Dtr8FvVAL+6jV0ALmqhWSXp99op2+QwHg7kgDg==}
     hasBin: true
     dependencies:
       consola: 3.2.3
@@ -2282,15 +2285,15 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /@nuxt/devtools@0.7.2(nuxt@3.6.5)(vite@4.4.8):
-    resolution: {integrity: sha512-oBq88qa1L0eaUwaUqetwQpWyU5PRtcwO8BvjWSGMbh+6F0lF85C1EtsSRFoxaizY6nYM2/WV4c4VBDsKXUkqgQ==}
+  /@nuxt/devtools@0.7.4(nuxt@3.6.5)(vite@4.4.8):
+    resolution: {integrity: sha512-uaKvVIYWuJ5L1NasXYiZfOh3w2HkHwaMyyVCceabVsOh27PBIeV7rzF5zyMrkyO3vivmWUuXcoZo3M0JO41sqg==}
     hasBin: true
     peerDependencies:
       nuxt: ^3.6.5
       vite: '*'
     dependencies:
-      '@nuxt/devtools-kit': 0.7.2(nuxt@3.6.5)(vite@4.4.8)
-      '@nuxt/devtools-wizard': 0.7.2
+      '@nuxt/devtools-kit': 0.7.4(nuxt@3.6.5)(vite@4.4.8)
+      '@nuxt/devtools-wizard': 0.7.4
       '@nuxt/kit': 3.6.5
       birpc: 0.2.12
       boxen: 7.1.1
@@ -2320,7 +2323,7 @@ packages:
       sirv: 2.0.3
       unimport: 3.1.0(rollup@3.27.0)
       vite: 4.4.8(@types/node@20.4.5)
-      vite-plugin-inspect: 0.7.33(vite@4.4.8)
+      vite-plugin-inspect: 0.7.35(@nuxt/kit@3.6.5)(vite@4.4.8)
       vite-plugin-vue-inspector: 3.5.0(vite@4.4.8)
       wait-on: 7.0.1
       which: 3.0.1
@@ -6547,6 +6550,16 @@ packages:
       - encoding
     dev: true
 
+  /graphql-scalars@1.22.2(graphql@16.7.1):
+    resolution: {integrity: sha512-my9FB4GtghqXqi/lWSVAOPiTzTnnEzdOXCsAC2bb5V7EFNQjVjwy3cSSbUvgYOtDuDibd+ZsCDhz+4eykYOlhQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      graphql: 16.7.1
+      tslib: 2.6.1
+    dev: false
+
   /graphql-tag@2.12.6(graphql@16.7.1):
     resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
     engines: {node: '>=10'}
@@ -6554,7 +6567,7 @@ packages:
       graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 16.7.1
-      tslib: 2.5.3
+      tslib: 2.6.1
     dev: true
 
   /graphql-ws@5.14.0(graphql@16.7.1):
@@ -11468,13 +11481,18 @@ packages:
       vue-tsc: 1.8.8(typescript@5.1.6)
     dev: true
 
-  /vite-plugin-inspect@0.7.33(vite@4.4.8):
-    resolution: {integrity: sha512-cQRLQKa/+Ua++5hN0IZfqNn1JYXBg2eCQOSUatPTwhXMO7nwfSvhhSc45E1nXfBBEhzLLOxgr1OdbDu55PiDDA==}
+  /vite-plugin-inspect@0.7.35(@nuxt/kit@3.6.5)(vite@4.4.8):
+    resolution: {integrity: sha512-e5w5dJAj3vDcHTxn8hHbiH+mVqYs17gaW00f3aGuMTXiqUog+T1Lsxr9Jb4WRiip84cpuhR0KFFBT1egtXboiA==}
     engines: {node: '>=14'}
     peerDependencies:
+      '@nuxt/kit': '*'
       vite: ^3.1.0 || ^4.0.0
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
     dependencies:
       '@antfu/utils': 0.7.5
+      '@nuxt/kit': 3.6.5
       '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
       debug: 4.3.4
       fs-extra: 11.1.1

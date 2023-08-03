@@ -17,6 +17,16 @@ export const builder = new SchemaBuilder<{
   };
   Context: Context;
   PrismaTypes: PrismaTypes;
+  Scalars: {
+    Date: {
+      Input: Date;
+      Output: Date;
+    };
+    DateTime: {
+      Input: Date;
+      Output: Date;
+    };
+  };
 }>({
   plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin],
   authScopes: async (context) => ({

@@ -36,6 +36,7 @@
     "@vorms/resolvers": "^1.1.0",
     "bullmq": "^4.6.3",
     "graphql": "^16.7.1",
+    "graphql-scalars": "^1.22.2",
     "graphql-yoga": "^4.0.3",
     "lucia": "^2.0.0",
     "zod": "^3.21.4"
