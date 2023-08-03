@@ -4,6 +4,7 @@ import PrismaPlugin from "@pothos/plugin-prisma";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";
 import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
+import SimpleObjectsPlugin from "@pothos/plugin-simple-objects";
 import { Prisma } from "@prisma/client";
 
 import { prisma } from "../utils/prisma";
@@ -18,7 +19,7 @@ export const builder = new SchemaBuilder<{
   PrismaTypes: PrismaTypes;
   Scalars: Scalars;
 }>({
-  plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin],
+  plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin, SimpleObjectsPlugin],
   authScopes,
   prisma: { client: prisma, dmmf: Prisma.dmmf, filterConnectionTotalCount: true },
   relayOptions: {
