@@ -4,33 +4,23 @@ import PrismaPlugin from "@pothos/plugin-prisma";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";
 import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
-import { AuthRole, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import { prisma } from "../utils/prisma";
+import { type AuthScopes, authScopes } from "./auth-scopes";
 import { type Context } from "./context";
 import { type Scalars } from "./types/scalars";
 
 // Pothos Schema Builder
 export const builder = new SchemaBuilder<{
-  AuthScopes: {
-    isAuthenticated: boolean;
-    hasAuthRole: AuthRole;
-  };
+  AuthScopes: AuthScopes;
   Context: Context;
   PrismaTypes: PrismaTypes;
   Scalars: Scalars;
 }>({
   plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin],
-  authScopes: async (context) => ({
-    isAuthenticated: !!context.session?.user,
-    hasAuthRole: (role: AuthRole) =>
-      context.session?.user ? [AuthRole.ADMINISTRATOR, role].includes(context.session.user.role) : false,
-  }),
-  prisma: {
-    client: prisma,
-    dmmf: Prisma.dmmf,
-    filterConnectionTotalCount: true,
-  },
+  authScopes,
+  prisma: { client: prisma, dmmf: Prisma.dmmf, filterConnectionTotalCount: true },
   relayOptions: {
     clientMutationId: "omit",
     cursorType: "ID",
