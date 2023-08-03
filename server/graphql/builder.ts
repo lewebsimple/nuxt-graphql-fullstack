@@ -8,6 +8,7 @@ import { AuthRole, Prisma } from "@prisma/client";
 
 import { prisma } from "../utils/prisma";
 import { type Context } from "./context";
+import { type Scalars } from "./types/scalars";
 
 // Pothos Schema Builder
 export const builder = new SchemaBuilder<{
@@ -17,16 +18,7 @@ export const builder = new SchemaBuilder<{
   };
   Context: Context;
   PrismaTypes: PrismaTypes;
-  Scalars: {
-    Date: {
-      Input: Date;
-      Output: Date;
-    };
-    DateTime: {
-      Input: Date;
-      Output: Date;
-    };
-  };
+  Scalars: Scalars;
 }>({
   plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin],
   authScopes: async (context) => ({
