@@ -1,4 +1,3 @@
-import { AuthRole } from "@prisma/client";
 import { type Session } from "lucia";
 
 export default defineEventHandler(async (event) => {
@@ -15,7 +14,7 @@ export default defineEventHandler(async (event) => {
         providerUserId: email.toLowerCase(),
         password,
       },
-      attributes: { email, role: AuthRole.UNVERIFIED },
+      attributes: { email, role: "UNVERIFIED" },
     });
     result.session = await auth.createSession({
       userId: user.userId,

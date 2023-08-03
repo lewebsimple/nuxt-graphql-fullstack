@@ -1,4 +1,4 @@
-import { AuthRole } from "@prisma/client";
+import { type AuthRole } from "@prisma/client";
 import { type Session } from "lucia";
 
 export function useAuth() {
@@ -6,7 +6,7 @@ export function useAuth() {
 
   const isAuthenticated = computed(() => !!session.value?.user);
   const hasAuthRole = (role: AuthRole) =>
-    session.value?.user && [AuthRole.ADMINISTRATOR, role].includes(session.value.user.role);
+    session.value?.user && ["ADMINISTRATOR", role].includes(session.value.user.role);
 
   async function login(body: { email: string; password: string }) {
     const { session: newSession, error } = await $fetch<{ session: Session | null; error: string | null }>(
