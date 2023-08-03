@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.1.13
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.12...v0.1.13)
+
+### 🚀 Enhancements
+
+- Upload scalar type ([ed217c9](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ed217c9))
+
+### 🩹 Fixes
+
+- AuthRole doesn't work on the client-side ([a3ebf42](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/a3ebf42))
+
+### 🏡 Chore
+
+- Prisma ^5.1.1 ([5086c63](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/5086c63))
+- Update generated graphql schema ([e442e2d](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/e442e2d))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.12
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.11...v0.1.12)
