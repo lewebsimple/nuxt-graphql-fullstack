@@ -1,7 +1,7 @@
 import { AuthRole, type Prisma } from "@prisma/client";
 
 import { builder } from "../builder";
-import { SortOrderEnumType } from "./sort-order";
+import { StringFilter } from "./prisma-input";
 
 // AuthRole enum type
 export const AuthRoleEnumType = builder.enumType(AuthRole, { name: "AuthRole" });
@@ -13,38 +13,7 @@ export const AuthUserPrismaNode = builder.prismaNode("AuthUser", {
     email: t.exposeString("email"),
     role: t.expose("role", { type: AuthRoleEnumType }),
   }),
-  authScopes: ({ id }, { session }) => session?.user.userId === id,
-});
-
-// authUsers orderBy
-export const AuthUsersOrderBy = {
-  id: "id",
-  email: "email",
-  role: "role",
-};
-export type AuthUsersOrderBy = (typeof AuthUsersOrderBy)[keyof typeof AuthUsersOrderBy];
-export const AuthUsersOrderByEnumType = builder.enumType(AuthUsersOrderBy, { name: "AuthUsersOrderBy" });
-
-// authUsers input
-export type AuthUsersInput = {
-  orderBy?: AuthUsersOrderBy | null;
-  order?: Prisma.SortOrder | null;
-  role?: AuthRole | null;
-};
-export const AuthUsersInput = builder.inputRef<AuthUsersInput>("AuthUsersInput").implement({
-  fields: (t) => ({
-    orderBy: t.field({ type: AuthUsersOrderBy, required: false, defaultValue: "id" }),
-    order: t.field({ type: SortOrderEnumType, required: false, defaultValue: "asc" }),
-    role: t.field({ type: AuthRoleEnumType, required: false }),
-  }),
-});
-
-const authUsersWhere = (input: AuthUsersInput): Prisma.AuthUserWhereInput => ({
-  ...(input.role ? { role: { equals: input.role } } : {}),
-});
-
-const authUsersOrderBy = (input: AuthUsersInput): Prisma.AuthUserOrderByWithAggregationInput => ({
-  ...(input.orderBy && input.order ? { [input.orderBy]: input.order } : {}),
+  authScopes: ({ id }, { session }) => session?.user.userId === id || session?.user.role === "ADMINISTRATOR",
 });
 
 // authUsers query
@@ -52,13 +21,30 @@ export const AuthUsersQuery = builder.queryField("authUsers", (t) =>
   t.prismaConnection({
     type: "AuthUser",
     cursor: "id",
-    args: { input: t.arg({ type: AuthUsersInput, required: true }) },
-    totalCount: (_parent, { input }, { prisma }) => prisma.authUser.count({ where: authUsersWhere(input) }),
-    resolve: (query, _root, { input }, { prisma }) =>
+    args: {
+      where: t.arg({
+        type: builder.prismaWhere("AuthUser", {
+          fields: {
+            email: StringFilter,
+            role: builder.prismaFilter(AuthRoleEnumType, { ops: ["equals", "in", "not", "notIn"] }),
+          },
+        }),
+      }),
+      orderBy: t.arg({
+        type: builder.prismaOrderBy("AuthUser", {
+          fields: {
+            id: true,
+            email: true,
+          },
+        }),
+      }),
+    },
+    totalCount: (_parent, { where }, { prisma }) => prisma.authUser.count({ where: { ...(where ?? {}) } }),
+    resolve: (query, _root, { where, orderBy }, { prisma }) =>
       prisma.authUser.findMany({
         ...query,
-        where: authUsersWhere(input),
-        orderBy: authUsersOrderBy(input),
+        where: { ...(where ?? {}) },
+        orderBy: { ...(orderBy ?? {}) },
       }),
     authScopes: { hasAuthRole: "ADMINISTRATOR" },
   }),

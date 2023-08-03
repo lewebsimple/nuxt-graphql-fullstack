@@ -28,6 +28,7 @@
     "@nuxthq/ui": "^2.7.0",
     "@pothos/core": "^3.32.1",
     "@pothos/plugin-prisma": "^3.54.0",
+    "@pothos/plugin-prisma-utils": "^0.10.0",
     "@pothos/plugin-relay": "^3.43.0",
     "@pothos/plugin-scope-auth": "^3.20.0",
     "@pothos/plugin-simple-objects": "^3.7.0",

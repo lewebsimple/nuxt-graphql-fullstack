@@ -8,7 +8,8 @@ generator client {
 }
 
 generator pothos {
-  provider = "prisma-pothos-types"
+  provider    = "prisma-pothos-types"
+  prismaUtils = true
 }
 
 enum AuthRole {

@@ -2,6 +2,7 @@ import SchemaBuilder from "@pothos/core";
 // eslint-disable-next-line import/no-named-as-default
 import PrismaPlugin from "@pothos/plugin-prisma";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";
+import PrismaUtils from "@pothos/plugin-prisma-utils";
 import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
 import SimpleObjectsPlugin from "@pothos/plugin-simple-objects";
@@ -19,7 +20,7 @@ export const builder = new SchemaBuilder<{
   PrismaTypes: PrismaTypes;
   Scalars: Scalars;
 }>({
-  plugins: [ScopeAuthPlugin, PrismaPlugin, RelayPlugin, SimpleObjectsPlugin],
+  plugins: [ScopeAuthPlugin, PrismaPlugin, PrismaUtils, RelayPlugin, SimpleObjectsPlugin],
   authScopes,
   prisma: { client: prisma, dmmf: Prisma.dmmf, filterConnectionTotalCount: true },
   relayOptions: {
