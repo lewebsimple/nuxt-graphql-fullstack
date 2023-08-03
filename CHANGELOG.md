@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.1.12
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.11...v0.1.12)
+
+### 🚀 Enhancements
+
+- Graphql config in default project ([c8dbbff](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/c8dbbff))
+- Add @pothos/plugin-simple-objects ([0b0a1e0](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/0b0a1e0))
+
+### 💅 Refactors
+
+- Define Scalars type in graphql/types/scalars.ts ([61a98da](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/61a98da))
+- Separate auth-scopes definition ([350bfd3](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/350bfd3))
+- AuthUsers where / orderBy built with @pothos/plugin-prisma-utils ([710e6e6](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/710e6e6))
+
+### 🏡 Chore
+
+- Update deps ([9e33df4](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/9e33df4))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.11
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.10...v0.1.11)
