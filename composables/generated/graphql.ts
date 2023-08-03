@@ -26,6 +26,13 @@ export enum AuthRole {
   Verified = 'VERIFIED'
 }
 
+export type AuthRoleFilter = {
+  equals: InputMaybe<AuthRole>;
+  in: InputMaybe<Array<AuthRole>>;
+  not: InputMaybe<AuthRoleFilter>;
+  notIn: InputMaybe<Array<AuthRole>>;
+};
+
 export type AuthUser = Node & {
   __typename?: 'AuthUser';
   email: Scalars['String']['output'];
@@ -33,17 +40,15 @@ export type AuthUser = Node & {
   role: AuthRole;
 };
 
-export type AuthUsersInput = {
-  order: InputMaybe<SortOrder>;
-  orderBy: InputMaybe<AuthUsersOrderBy>;
-  role: InputMaybe<AuthRole>;
+export type AuthUserFilter = {
+  email: InputMaybe<StringFilter>;
+  role: InputMaybe<AuthRoleFilter>;
 };
 
-export enum AuthUsersOrderBy {
-  Email = 'email',
-  Id = 'id',
-  Role = 'role'
-}
+export type AuthUserOrderBy = {
+  email: InputMaybe<OrderBy>;
+  id: InputMaybe<OrderBy>;
+};
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -54,6 +59,11 @@ export type Mutation = {
 export type Node = {
   id: Scalars['ID']['output'];
 };
+
+export enum OrderBy {
+  Asc = 'Asc',
+  Desc = 'Desc'
+}
 
 export type PageInfo = {
   __typename?: 'PageInfo';
@@ -77,8 +87,9 @@ export type QueryAuthUsersArgs = {
   after: InputMaybe<Scalars['ID']['input']>;
   before: InputMaybe<Scalars['ID']['input']>;
   first: InputMaybe<Scalars['Int']['input']>;
-  input: AuthUsersInput;
   last: InputMaybe<Scalars['Int']['input']>;
+  orderBy: InputMaybe<AuthUserOrderBy>;
+  where: InputMaybe<AuthUserFilter>;
 };
 
 
@@ -108,6 +119,13 @@ export enum SortOrder {
   Asc = 'asc',
   Desc = 'desc'
 }
+
+export type StringFilter = {
+  contains: InputMaybe<Scalars['String']['input']>;
+  equals: InputMaybe<Scalars['String']['input']>;
+  not: InputMaybe<StringFilter>;
+  startsWith: InputMaybe<Scalars['String']['input']>;
+};
 
 export type VersionQueryVariables = Exact<{ [key: string]: never; }>;
 
