@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.1.11
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.10...v0.1.11)
+
+### 🚀 Enhancements
+
+- DateTime scalar type ([43bd920](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/43bd920))
+- SortOrder enum type ([fdd2adc](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/fdd2adc))
+- AuthUsers input ([6b550f4](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/6b550f4))
+
+### 🩹 Fixes
+
+- Prisma 5.1.0 is causing issues with enums ([5efcee5](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/5efcee5))
+
+### 💅 Refactors
+
+- Healthcheck worker validation with Zod ([5db2538](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/5db2538))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.10
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.9...v0.1.10)
