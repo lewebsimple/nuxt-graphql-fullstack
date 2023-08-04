@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.1.14
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.13...v0.1.14)
+
+### 🚀 Enhancements
+
+- Initial GraphQL subscriptions over WebSocket ([d48bdf6](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/d48bdf6))
+
+### 🩹 Fixes
+
+- Dev / prod WebSocket server ([cf8cc68](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/cf8cc68))
+- Session on subscription context ([392c4a2](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/392c4a2))
+
+### 🏡 Chore
+
+- Update dependencies ([a4dd176](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/a4dd176))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.13
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.12...v0.1.13)
