@@ -79,7 +79,6 @@ export type Query = {
   authUsers: QueryAuthUsersConnection;
   node: Maybe<Node>;
   nodes: Array<Maybe<Node>>;
-  test: Scalars['Upload']['output'];
   /** Current application version */
   version: Scalars['String']['output'];
 };

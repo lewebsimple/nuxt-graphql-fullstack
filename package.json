@@ -50,7 +50,7 @@
     "@lewebsimple/stylelint-config": "^0.7.9",
     "@nuxt/devtools": "latest",
     "@parcel/watcher": "^2.2.0",
-    "@types/node": "^20.4.6",
+    "@types/node": "^20.4.7",
     "changelogen": "^0.5.4",
     "eslint": "^8.46.0",
     "graphql-config": "^5.0.2",
