@@ -1,8 +1,11 @@
-import urql, { cacheExchange, fetchExchange, ssrExchange } from "@urql/vue";
+import urql, { cacheExchange, fetchExchange, ssrExchange, subscriptionExchange } from "@urql/vue";
+import { createClient as createWSClient, type SubscribePayload } from "graphql-ws";
+import { WebSocket } from "ws";
 
 import { useState } from "#app";
 
 export default defineNuxtPlugin((nuxtApp) => {
+  const { httpEndpoint, wsEndpoint } = useRuntimeConfig().public.graphql;
   const ssr = ssrExchange({ isClient: process.client });
   const urqlState = useState<ReturnType<typeof ssr.extractData>>("urql");
 
@@ -20,11 +23,25 @@ export default defineNuxtPlugin((nuxtApp) => {
     });
   }
 
+  // WebSocket client
+  const wsClient = createWSClient({
+    url: wsEndpoint,
+    webSocketImpl: process.server && WebSocket,
+  });
+
   // Custom exchanges
-  const exchanges = [cacheExchange, ssr, fetchExchange];
+  const exchanges = [
+    cacheExchange,
+    ssr,
+    fetchExchange,
+    subscriptionExchange({
+      forwardSubscription: (operation) => ({
+        subscribe: (sink) => ({ unsubscribe: wsClient.subscribe(operation as SubscribePayload, sink) }),
+      }),
+    }),
+  ];
 
   // Provide urql client
-  const { url } = useRuntimeConfig().public.graphql;
   const headers = { ...useRequestHeaders(), origin: useRequestURL().origin };
-  nuxtApp.vueApp.use(urql, { url, exchanges, fetchOptions: { headers } });
+  nuxtApp.vueApp.use(urql, { url: httpEndpoint, exchanges, fetchOptions: { headers } });
 });

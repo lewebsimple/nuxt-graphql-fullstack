@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     schema,
     context: getContext(event),
     graphqlEndpoint: "/api/graphql",
-    graphiql: { defaultQuery: "{ version }" },
+    graphiql: { subscriptionsProtocol: "WS" },
   });
   return yoga.handle(event.node.req, event.node.res);
 });

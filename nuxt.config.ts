@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     },
     public: {
       graphql: {
-        url: "http://localhost:3000/api/graphql",
+        httpEndpoint: "http://localhost:3000/api/graphql",
+        wsEndpoint: "ws://localhost:3000/api/graphql",
       },
       siteName: "Nuxt 3 GraphQL Fullstack Starter",
     },

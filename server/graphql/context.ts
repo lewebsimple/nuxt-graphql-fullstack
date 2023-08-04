@@ -5,6 +5,7 @@ export function getContext(event: H3Event) {
   return {
     session: event.context.session,
     prisma,
+    pubSub,
   };
 }
 

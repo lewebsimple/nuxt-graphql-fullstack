@@ -53,8 +53,13 @@ export type AuthUserOrderBy = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  /** Dummy mutation */
+  /** Publish messages to pong subscription */
   ping: Scalars['String']['output'];
+};
+
+
+export type MutationPingArgs = {
+  message?: Scalars['String']['input'];
 };
 
 export type Node = {
@@ -126,6 +131,12 @@ export type StringFilter = {
   equals: InputMaybe<Scalars['String']['input']>;
   not: InputMaybe<StringFilter>;
   startsWith: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  /** Subscribe to messages sent by ping mutation */
+  pong: Scalars['String']['output'];
 };
 
 export type VersionQueryVariables = Exact<{ [key: string]: never; }>;
