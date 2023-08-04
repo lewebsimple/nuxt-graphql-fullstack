@@ -4,8 +4,10 @@ import { useServer } from "graphql-ws/lib/use/ws";
 import { type Server } from "http";
 import { WebSocketServer } from "ws";
 
+import { auth } from "../utils/auth";
 import { prisma } from "../utils/prisma";
 import { pubSub } from "../utils/pubsub";
+import { type Context } from "./context";
 import { schema } from "./schema";
 
 export async function wsInitServer(httpServer: Server) {
@@ -13,9 +15,11 @@ export async function wsInitServer(httpServer: Server) {
   useServer(
     {
       schema,
-      context: async ({ extra }) => {
-        // TODO: Add session support using extra.request
-        return { prisma, pubSub };
+      context: async ({ extra }): Promise<Context> => {
+        // TODO: Add CSRF protection against extra.request.headers.host
+        const sessionId = auth.readSessionCookie(extra.request.headers.cookie);
+        const session = sessionId ? await auth.validateSession(sessionId) : null;
+        return { session, prisma, pubSub };
       },
       execute,
       subscribe,
