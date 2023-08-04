@@ -1,7 +1,7 @@
 import { type Job, Worker } from "bullmq";
 import { z } from "zod";
 
-const { connection } = useRuntimeConfig().bullmq;
+const { redis: connection } = useRuntimeConfig();
 
 const HealthCheckDataTypeSchema = z.object({
   message: z.string(),

@@ -2,8 +2,14 @@ import { createRedisEventTarget } from "@graphql-yoga/redis-event-target";
 import { createPubSub } from "graphql-yoga";
 import { Redis } from "ioredis";
 
-const publishClient = new Redis();
-const subscribeClient = new Redis();
+// We don't have access to useRuntimeConfig() here, so we need to use this:
+const redis = {
+  host: process.env.NUXT_REDIS_HOST || "localhost",
+  port: parseInt(process.env.NUXT_REDIS_PORT || "6379"),
+};
+
+const publishClient = new Redis(redis);
+const subscribeClient = new Redis(redis);
 
 const eventTarget = createRedisEventTarget({
   publishClient,

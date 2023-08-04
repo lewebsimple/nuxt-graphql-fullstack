@@ -12,11 +12,9 @@ export default defineNuxtConfig({
   imports: { dirs: ["composables/generated"] },
   modules: ["@lewebsimple/nuxt3-svg", "@nuxthq/ui"],
   runtimeConfig: {
-    bullmq: {
-      connection: {
-        host: process.env.NUXT_BULLMQ_CONNECTION_HOST || "localhost",
-        port: parseInt(process.env.NUXT_BULLMQ_CONNECTION_PORT || "6379"),
-      },
+    redis: {
+      host: process.env.NUXT_REDIS_HOST || "localhost",
+      port: parseInt(process.env.NUXT_REDIS_PORT || "6379"),
     },
     public: {
       graphql: {
