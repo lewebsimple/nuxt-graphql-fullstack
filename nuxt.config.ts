@@ -9,8 +9,16 @@ export default defineNuxtConfig({
     { path: "~/assets/svg", extensions: ["svg"], prefix: "svg" },
   ],
   devtools: { enabled: true },
+  i18n: {
+    defaultLocale: "en",
+    langDir: "locales",
+    locales: [
+      { code: "en", iso: "en-US", file: "en.json", name: "English" },
+      { code: "fr", iso: "fr-CA", file: "fr.json", name: "Français" },
+    ],
+  },
   imports: { dirs: ["composables/generated"] },
-  modules: ["@lewebsimple/nuxt3-svg", "@nuxthq/ui"],
+  modules: ["@lewebsimple/nuxt3-svg", "@nuxtjs/i18n", "@nuxthq/ui"],
   runtimeConfig: {
     redis: {
       host: process.env.NUXT_REDIS_HOST || "localhost",

@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Email is invalid",
+    "passwordRequired": "Password is required",
+    "login": "Login",
+    "loginFailed": "Login failed",
+    "logout": "Logout",
+    "signup": "Sign up",
+    "signupFailed": "Sign up failed",
+    "redirecting": "Redirecting..."
+  }
+}

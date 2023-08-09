@@ -15,6 +15,10 @@ async function onLogout() {
 </script>
 
 <template>
-  <UButton v-if="isRedirecting" color="gray" variant="ghost" block loading disabled>Redirecting...</UButton>
-  <UButton v-else block @click="onLogout">Logout</UButton>
+  <UButton v-if="isRedirecting" color="gray" variant="ghost" block loading disabled>
+    {{ $t("auth.redirecting") }}
+  </UButton>
+  <UButton v-else block @click="onLogout">
+    {{ $t("auth.logout") }}
+  </UButton>
 </template>

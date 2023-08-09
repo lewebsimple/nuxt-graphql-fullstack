@@ -3,14 +3,16 @@ import { useForm } from "@vorms/core";
 import { zodResolver } from "@vorms/resolvers/zod";
 import { z } from "zod";
 
+const { t: $t } = useI18n();
+
 const isRedirecting = ref(false);
 
 const { register, errors, handleSubmit, isSubmitting } = useForm({
   initialValues: { email: "", password: "" },
   validate: zodResolver(
     z.object({
-      email: z.string().min(1, "Email is required").email("Email is invalid"),
-      password: z.string().min(1, "Password is required"),
+      email: z.string().min(1, $t("auth.emailRequired")).email($t("auth.emailInvalid")),
+      password: z.string().min(1, $t("auth.passwordRequired")),
     }),
   ),
   onSubmit: async (credentials) => {
@@ -21,7 +23,7 @@ const { register, errors, handleSubmit, isSubmitting } = useForm({
       isRedirecting.value = true;
       await useRouter().replace(redirect);
     } catch (error) {
-      errors.value.email = "Sign up failed";
+      errors.value.email = $t("auth.signupFailed");
     }
   },
 });
@@ -34,10 +36,10 @@ const passwordReveal = ref(false);
 
 <template>
   <form @submit="handleSubmit">
-    <UFormGroup name="email" label="Email" :error="errors?.email">
+    <UFormGroup name="email" :label="$t('auth.email')" :error="errors?.email">
       <UInput v-model="emailValue" v-bind="emailAttrs" type="email" icon="i-heroicons-envelope" />
     </UFormGroup>
-    <UFormGroup name="password" label="Password" :error="errors?.password">
+    <UFormGroup name="password" :label="$t('auth.password')" :error="errors?.password">
       <UInput
         v-model="passwordValue"
         v-bind="passwordAttrs"
@@ -56,7 +58,11 @@ const passwordReveal = ref(false);
         </template>
       </UInput>
     </UFormGroup>
-    <UButton v-if="isRedirecting" block color="gray" variant="ghost" loading disabled>Redirecting...</UButton>
-    <UButton v-else block type="submit" :loading="isSubmitting">Sign up</UButton>
+    <UButton v-if="isRedirecting" block color="gray" variant="ghost" loading disabled>
+      {{ $t("auth.redirecting") }}
+    </UButton>
+    <UButton v-else block type="submit" :loading="isSubmitting">
+      {{ $t("auth.signup") }}
+    </UButton>
   </form>
 </template>

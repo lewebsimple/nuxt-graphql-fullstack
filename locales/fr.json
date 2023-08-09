@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "emailRequired": "Courriel requis",
+    "emailInvalid": "Courriel invalide",
+    "passwordRequired": "Mot de passe requis",
+    "login": "Connexion",
+    "loginFailed": "Échec de la connexion",
+    "logout": "Déconnexion",
+    "signup": "Inscription",
+    "signupFailed": "Échec de l'inscription",
+    "redirecting": "Redirection..."
+  }
+}

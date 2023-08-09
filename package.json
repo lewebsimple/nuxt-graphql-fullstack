@@ -27,6 +27,7 @@
     "@lewebsimple/nuxt3-svg": "^0.2.2",
     "@lucia-auth/adapter-prisma": "^3.0.1",
     "@nuxthq/ui": "^2.7.0",
+    "@nuxtjs/i18n": "next",
     "@pothos/core": "^3.32.1",
     "@pothos/plugin-prisma": "^3.56.1",
     "@pothos/plugin-prisma-utils": "^0.10.0",
