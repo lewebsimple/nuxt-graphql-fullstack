@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.1.15
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.14...v0.1.15)
+
+### 🚀 Enhancements
+
+- Initial i18n support ([d425d65](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/d425d65))
+
+### 🏡 Chore
+
+- Update dependencies ([2d3c3e1](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/2d3c3e1))
+- Update dependencies ([dac3bb0](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/dac3bb0))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.14
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.13...v0.1.14)
