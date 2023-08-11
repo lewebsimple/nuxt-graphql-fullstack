@@ -12,7 +12,7 @@ module.exports = {
     ];
     return inquirer.prompt(questions).then((answers) => ({
       ...answers,
-      filename: answers.name.toLowerCase(),
+      filename: answers.name.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase(),
     }));
   },
 };
