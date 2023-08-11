@@ -1,6 +1,7 @@
 import { Queue } from "bullmq";
 
-import { type HealthcheckDataType, type HealthcheckResultType } from "~/server/workers";
+// Import worker types
+import { type HealthcheckDataType, type HealthcheckResultType } from "~/server/workers/healthcheck";
 
 const { redis: connection } = useRuntimeConfig();
 
