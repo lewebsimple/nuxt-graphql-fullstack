@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.1.16
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.15...v0.1.16)
+
+### 🚀 Enhancements
+
+- Hygen worker generator ([a713cf1](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/a713cf1))
+- Seed admin user ([81ec1d0](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/81ec1d0))
+- Seed hygen generator ([f4d1e35](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/f4d1e35))
+
+### 🏡 Chore
+
+- Update dependencies ([380abc6](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/380abc6))
+
+### ❤️  Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.15
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.1.14...v0.1.15)
