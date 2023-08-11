@@ -20,7 +20,8 @@
     "release": "pnpm lint && changelogen --release --push"
   },
   "prisma": {
-    "schema": "server/prisma/schema.prisma"
+    "schema": "server/prisma/schema.prisma",
+    "seed": "tsx server/prisma/seed.ts"
   },
   "dependencies": {
     "@graphql-yoga/redis-event-target": "^2.0.0",
@@ -67,6 +68,7 @@
     "nuxt": "^3.6.5",
     "prisma": "^5.1.1",
     "stylelint": "^15.10.2",
+    "tsx": "^3.12.7",
     "vue-tsc": "^1.8.8"
   },
   "eslintConfig": {
