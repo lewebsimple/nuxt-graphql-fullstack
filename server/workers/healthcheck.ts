@@ -3,25 +3,31 @@ import { z } from "zod";
 
 const { redis: connection } = useRuntimeConfig();
 
-const HealthCheckDataTypeSchema = z.object({
+const HealthcheckDataTypeSchema = z.object({
   message: z.string(),
 });
-export type HealthcheckDataType = z.input<typeof HealthCheckDataTypeSchema>;
+export type HealthcheckDataType = z.input<typeof HealthcheckDataTypeSchema>;
 
-const HealthcheckReturnTypeSchema = z.string();
-export type HealthcheckReturnType = z.input<typeof HealthcheckReturnTypeSchema>;
+const HealthcheckResultTypeSchema = z.object({
+  message: z.string(),
+});
+export type HealthcheckResultType = z.input<typeof HealthcheckResultTypeSchema>;
 
-export const healthcheck = new Worker<HealthcheckDataType, HealthcheckReturnType>(
-  "healthcheck",
+export const workerHealthcheck = new Worker<HealthcheckDataType, HealthcheckResultType>(
+  "Healthcheck",
   async (job: Job) => {
-    const data = HealthCheckDataTypeSchema.parse(job.data);
-    console.log(`Healthcheck worker received message "${data.message}" from job ID ${job.id}`);
+    const { message } = HealthcheckDataTypeSchema.parse(job.data);
+    console.log(`Healthcheck worker received message "${message}" from job named "${job.name}"`);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    return `Healthcheck worker completed job ID ${job.id}`;
+    return HealthcheckResultTypeSchema.parse({ message: `Good job, ${job.id}!` });
   },
   { connection },
 );
 
-healthcheck.on("completed", (_job, result) => {
-  console.log(result);
+workerHealthcheck.on("failed", (job, error) => {
+  console.error(`Healthcheck job "${job?.name}" failed with error: ${error.message}`);
+});
+
+workerHealthcheck.on("completed", (job, { message }) => {
+  console.log(`Healthcheck job "${job.name}" completed with result: ${message}`);
 });
