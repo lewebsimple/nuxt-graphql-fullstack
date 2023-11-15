@@ -1,0 +1,45 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum AuthRole {
+  UNVERIFIED
+  VERIFIED
+  ADMINISTRATOR
+}
+
+model AuthUser {
+  id String @id
+
+  auth_session AuthSession[]
+  auth_key     AuthKey[]
+
+  email String   @unique
+  role  AuthRole @default(UNVERIFIED)
+}
+
+model AuthSession {
+  id             String   @id
+  user_id        String
+  active_expires BigInt
+  idle_expires   BigInt
+  user           AuthUser @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+
+  @@index([user_id])
+}
+
+model AuthKey {
+  id              String   @id
+  hashed_password String?
+  user_id         String
+  user            AuthUser @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+}

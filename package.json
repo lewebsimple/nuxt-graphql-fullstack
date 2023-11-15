@@ -9,10 +9,17 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host 0.0.0.0",
     "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
-    "prepare": "husky install && nuxt prepare",
+    "prepare": "husky install && prisma generate && nuxt prepare",
     "release": "pnpm lint && changelogen --release --push"
+  },
+  "prisma": {
+    "schema": "server/prisma/schema.prisma",
+    "seed": "tsx server/prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.6.0"
   },
   "devDependencies": {
     "@lewebsimple/eslint-config": "^0.7.9",
@@ -24,6 +31,7 @@
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
     "nuxt": "^3.8.1",
+    "prisma": "^5.6.0",
     "stylelint": "^15.11.0",
     "vue-tsc": "^1.8.22"
   },
