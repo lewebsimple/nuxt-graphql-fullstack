@@ -1,0 +1,40 @@
+{
+  "name": "@lewebsimple/nuxt-minimal",
+  "description": "Minimal Nuxt boilerplate",
+  "version": "0.1.4",
+  "author": "Pascal Martineau <pascal@lewebsimple.ca>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lewebsimple/nuxt-minimal.git"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
+    "prepare": "husky install && nuxt prepare",
+    "release": "pnpm lint && changelogen --release --push"
+  },
+  "devDependencies": {
+    "@lewebsimple/eslint-config": "^0.7.9",
+    "@lewebsimple/stylelint-config": "^0.7.9",
+    "@nuxt/devtools": "latest",
+    "@types/node": "^20.9.0",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.53.0",
+    "husky": "^8.0.3",
+    "nano-staged": "^0.8.0",
+    "nuxt": "^3.8.1",
+    "stylelint": "^15.11.0",
+    "vue-tsc": "^1.8.22"
+  },
+  "eslintConfig": {
+    "extends": "@lewebsimple/eslint-config"
+  },
+  "stylelint": {
+    "extends": "@lewebsimple/stylelint-config"
+  },
+  "nano-staged": {
+    "*.{js,ts,vue}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix"
+  }
+}
