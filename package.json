@@ -27,6 +27,7 @@
     "@pothos/plugin-relay": "^3.44.0",
     "@pothos/plugin-scope-auth": "^3.20.0",
     "@prisma/client": "^5.6.0",
+    "@urql/vue": "^1.1.2",
     "graphql": "^16.8.1",
     "graphql-scalars": "^1.22.4",
     "graphql-yoga": "^5.0.0",

@@ -4,7 +4,7 @@ export default {
   projects: {
     default: {
       schema: "generated/graphql/schema.graphql",
-      documents: ["components/**/*.vue", "composables/**/*.ts"],
+      documents: ["{pages|components}**/*.vue", "composables/**/*.ts"],
       extensions: {
         codegen: {
           generates: {
@@ -12,7 +12,7 @@ export default {
               preset: "client",
               config: {
                 scalars: {
-                  DateTime: "Date",
+                  DateTime: "string",
                   Upload: "File",
                 },
                 useTypeImports: true,

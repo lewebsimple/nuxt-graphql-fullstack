@@ -6,7 +6,7 @@ import * as types from "./types";
 
 // Initialize builder
 builder.queryType({});
-//builder.mutationType({});
+builder.mutationType({});
 //builder.subscriptionType({});
 Function.prototype(types);
 
