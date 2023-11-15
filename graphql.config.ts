@@ -2,14 +2,22 @@ import type { IGraphQLConfig } from "graphql-config";
 
 export default {
   projects: {
-    // GraphQL schema
-    schema: {
-      schema: "http://localhost:3000/api/graphql",
+    default: {
+      schema: "generated/graphql/schema.graphql",
+      documents: ["components/**/*.vue", "composables/**/*.ts"],
       extensions: {
         codegen: {
           generates: {
-            "generated/graphql/schema.graphql": {
-              plugins: ["schema-ast"],
+            "generated/graphql/": {
+              preset: "client",
+              config: {
+                scalars: {
+                  DateTime: "Date",
+                  Upload: "File",
+                },
+                useTypeImports: true,
+              },
+              presetConfig: { fragmentMasking: false },
             },
           },
         },
