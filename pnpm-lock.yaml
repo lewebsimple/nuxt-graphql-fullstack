@@ -5,9 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@lucia-auth/adapter-prisma':
+    specifier: ^3.0.2
+    version: 3.0.2(@prisma/client@5.6.0)(lucia@2.7.4)
   '@prisma/client':
     specifier: ^5.6.0
     version: 5.6.0(prisma@5.6.0)
+  lucia:
+    specifier: ^2.7.4
+    version: 2.7.4
+  zod:
+    specifier: ^3.22.4
+    version: 3.22.4
 
 devDependencies:
   '@lewebsimple/eslint-config':
@@ -1002,6 +1011,16 @@ packages:
     transitivePeerDependencies:
       - postcss
     dev: true
+
+  /@lucia-auth/adapter-prisma@3.0.2(@prisma/client@5.6.0)(lucia@2.7.4):
+    resolution: {integrity: sha512-EyJWZene1/zasPwPctv8wwNErZt5mwwm5JATbhg+kXr3R8pbC7lJfVzDTAeeFClVH5k/FywRcsBl3JkPaNIcow==}
+    peerDependencies:
+      '@prisma/client': ^4.2.0 || ^5.0.0
+      lucia: ^2.0.0
+    dependencies:
+      '@prisma/client': 5.6.0(prisma@5.6.0)
+      lucia: 2.7.4
+    dev: false
 
   /@mapbox/node-pre-gyp@1.0.11:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -5122,6 +5141,10 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
+  /lucia@2.7.4:
+    resolution: {integrity: sha512-do6Aah5kX2DUl7N0CvELWV1/b+qZGF0AUmUrkthYeNfXfgx4RAkWi4BkAlgGDBB/0c1WApb18mUD1pA5qTaWmw==}
+    dev: false
+
   /magic-string-ast@0.3.0:
     resolution: {integrity: sha512-0shqecEPgdFpnI3AP90epXyxZy9g6CRZ+SZ7BcqFwYmtFEnZ1jpevcV5HoyVnlDS9gCnc1UIg3Rsvp3Ci7r8OA==}
     engines: {node: '>=16.14.0'}
@@ -8388,3 +8411,7 @@ packages:
       compress-commons: 5.0.1
       readable-stream: 3.6.2
     dev: true
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
