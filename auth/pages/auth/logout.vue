@@ -1,12 +1,12 @@
 <script setup lang="ts">
 definePageMeta({ layout: "blank", middleware: "is-authenticated" });
-
+defineI18nRoute({ paths: { fr: "/auth/deconnexion" } });
 useHead({ title: "Déconnexion" });
 </script>
 
 <template>
   <div id="page-auth-logout">
-    <TheAuthPage title="Confirmez la déconnexion">
+    <TheAuthPage :title="$t('auth.logout_title')">
       <TheAuthLogoutForm />
     </TheAuthPage>
   </div>

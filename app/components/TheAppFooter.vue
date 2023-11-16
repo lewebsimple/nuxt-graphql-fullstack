@@ -1,7 +1,8 @@
 <template>
   <footer class="py-2 bg-muted">
-    <div class="container flex justify-between items-center gap-4">
-      <AppVersion />
+    <div class="container flex items-center gap-4">
+      <AppVersion class="mr-auto" />
+      <LocaleSwitcher />
       <AuthButton />
     </div>
   </footer>
