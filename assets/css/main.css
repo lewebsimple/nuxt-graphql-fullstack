@@ -1,2 +1,4 @@
 @import "tailwind";
+@import "app";
+@import "forms";
 @import "typography";

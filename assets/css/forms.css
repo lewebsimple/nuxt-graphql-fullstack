@@ -1,0 +1,5 @@
+@layer components {
+  .form-wrapper {
+    @apply space-y-4;
+  }
+}

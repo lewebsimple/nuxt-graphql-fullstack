@@ -20,6 +20,6 @@
   }
 
   .text-muted {
-    @apply text-gray-500;
+    @apply text-gray-500 dark:text-gray-400;
   }
 }
