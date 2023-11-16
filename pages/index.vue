@@ -3,5 +3,5 @@ useHead({ title: "Home" });
 </script>
 
 <template>
-  <NuxtWelcome />
+  <div id="page-home">...</div>
 </template>

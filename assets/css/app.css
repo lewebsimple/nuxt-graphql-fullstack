@@ -1,6 +1,0 @@
-@layer base {
-  .divide-y,
-  .divide-x {
-    @apply divide-gray-200 dark:divide-gray-800;
-  }
-}

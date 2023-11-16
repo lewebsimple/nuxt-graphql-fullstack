@@ -1,0 +1,20 @@
+@layer base {
+  body {
+    @apply bg-white dark:bg-black;
+  }
+
+  .divide-y,
+  .divide-x {
+    @apply divide-gray-200 dark:divide-gray-800;
+  }
+}
+
+@layer utilities {
+  .bg-muted {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
+
+  .text-muted {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+}

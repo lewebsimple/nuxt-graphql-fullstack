@@ -18,8 +18,4 @@
   .link-default {
     @apply text-primary hover:underline;
   }
-
-  .text-muted {
-    @apply text-gray-500 dark:text-gray-400;
-  }
 }
