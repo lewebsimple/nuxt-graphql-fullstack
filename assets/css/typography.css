@@ -1,0 +1,25 @@
+@layer utilities {
+  .h1 {
+    @apply text-4xl lg:text-5xl font-extrabold tracking-tight;
+  }
+
+  .h2 {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+
+  .h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  .h4 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+
+  .link-default {
+    @apply text-primary hover:underline;
+  }
+
+  .text-muted {
+    @apply text-gray-500;
+  }
+}
