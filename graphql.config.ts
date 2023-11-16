@@ -3,12 +3,12 @@ import type { IGraphQLConfig } from "graphql-config";
 export default {
   projects: {
     default: {
-      schema: "generated/graphql/schema.graphql",
+      schema: "graphql/schema.graphql",
       documents: ["{pages|components}**/*.vue", "composables/**/*.ts"],
       extensions: {
         codegen: {
           generates: {
-            "generated/graphql/": {
+            "graphql/utils/": {
               preset: "client",
               config: {
                 scalars: {

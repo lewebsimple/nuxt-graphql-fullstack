@@ -2,7 +2,7 @@ import { prisma as prismaAdapter } from "@lucia-auth/adapter-prisma";
 import { lucia } from "lucia";
 import { h3 } from "lucia/middleware";
 
-import { prisma } from "~/server/lib/prisma";
+import { prisma } from "~/prisma/server/utils/prisma";
 
 export const auth = lucia({
   adapter: prismaAdapter(prisma, {

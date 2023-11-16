@@ -1,8 +1,5 @@
 import { useQuery } from "@urql/vue";
 
-import { graphql } from "~/generated/graphql";
-import type { VersionQuery } from "~/generated/graphql/graphql";
-
 export async function useVersion() {
   const { data, error } = await useQuery<VersionQuery>({
     query: graphql(`

@@ -16,8 +16,7 @@
     "release": "pnpm lint && changelogen --release --push"
   },
   "prisma": {
-    "schema": "server/prisma/schema.prisma",
-    "seed": "tsx server/prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^3.0.2",

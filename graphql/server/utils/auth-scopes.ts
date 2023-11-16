@@ -1,7 +1,5 @@
 import { type AuthRole } from "@prisma/client";
 
-import { type Context } from "./context";
-
 export type AuthScopes = {
   public: boolean;
   isAuthenticated: boolean;

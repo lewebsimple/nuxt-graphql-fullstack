@@ -7,11 +7,7 @@ import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
 import { Prisma } from "@prisma/client";
 
-import { type AuthScopes, authScopes } from "~/server/graphql/auth-scopes";
-import { type Context } from "~/server/graphql/context";
-import { type Scalars } from "~/server/graphql/types/scalars";
-import { prisma } from "~/server/lib/prisma";
-import { decodeGlobalID, encodeGlobalID } from "~/server/lib/relay";
+import { type Scalars } from "~/graphql/server/types/scalars";
 
 // Pothos Schema Builder
 export const builder = new SchemaBuilder<{

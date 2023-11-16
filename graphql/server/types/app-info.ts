@@ -1,7 +1,5 @@
 import { version } from "~/package.json";
 
-import { builder } from "../builder";
-
 export const AppInfoQueries = builder.queryFields((t) => ({
   // Application version
   version: t.string({

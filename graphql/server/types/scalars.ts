@@ -1,7 +1,5 @@
 import { DateTimeResolver } from "graphql-scalars";
 
-import { builder } from "../builder";
-
 export type Scalars = {
   DateTime: { Input: Date; Output: Date };
   Upload: { Input: File; Output: never };

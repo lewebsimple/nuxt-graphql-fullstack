@@ -1,4 +1,4 @@
-import { type Prisma, prisma } from "~/server/lib/prisma";
+import { prisma } from "~/prisma/server/utils/prisma";
 
 import * as seeds from "./seeds";
 
