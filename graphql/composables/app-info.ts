@@ -22,6 +22,5 @@ export function usePing() {
       }
     `),
   );
-
   return { ping };
 }

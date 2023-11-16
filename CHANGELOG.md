@@ -1,5 +1,39 @@
 # Changelog
 
+## v0.1.5
+
+
+### 🚀 Enhancements
+
+- Initial Prisma schema and migration ([5e5416f](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/5e5416f))
+- Auth setup with Lucia ([c3b7996](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/c3b7996))
+- Initial GraphQL schema ([40d7543](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/40d7543))
+- Save GraphQL schema to file from code ([f81c827](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/f81c827))
+- GraphQL @urql/vue client ([9f63458](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/9f63458))
+- @nuxt/ui ([c808062](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/c808062))
+- More styles ([fae28c7](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/fae28c7))
+- Dev script with codegen ([8fd3efa](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/8fd3efa))
+
+### 🩹 Fixes
+
+- Only generate graphql operations ([3c9ee56](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/3c9ee56))
+- Import auth in seed ([2fd07fd](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/2fd07fd))
+
+### 💅 Refactors
+
+- Auth signup ([d497bf6](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/d497bf6))
+- Auth layer ([45e1630](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/45e1630))
+- App / graphql layers ([d9fabda](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/d9fabda))
+
+### 🏡 Chore
+
+- Initial Nuxt project ([f53a757](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/f53a757))
+- Upate eslint / stylelint config ([16faab4](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/16faab4))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.1.4
 
 [compare changes](https://github.com/lewebsimple/nuxt-minimal/compare/v0.1.3...v0.1.4)
