@@ -1,5 +1,4 @@
-import { type AuthSignup, authSignupSchema } from "~/composables/auth";
-import { auth } from "~/server/lib/auth";
+import { type AuthSignup, authSignupSchema } from "~/auth/composables/auth";
 
 export default defineEventHandler(async (event) => {
   if (event.context.session?.user?.role !== "ADMINISTRATOR") {

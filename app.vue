@@ -6,5 +6,6 @@ useHead({ titleTemplate: (title) => (title ? `${title} | ${siteName}` : siteName
 <template>
   <NuxtLayout>
     <NuxtPage />
+    <UNotifications />
   </NuxtLayout>
 </template>

@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware((to) => {
   if (!isAuthenticated.value) {
     return navigateTo(`/auth/login?redirect=${to.fullPath}`);
   } else if (!hasAuthRole(to.meta.hasAuthRole || "ADMINISTRATOR")) {
-    abortNavigation("Unauthorized");
+    abortNavigation({ statusCode: 403, statusMessage: "Opération non permise" });
   }
 });
 

@@ -1,5 +1,4 @@
-import { type AuthLogin, authLoginSchema } from "~/composables/auth";
-import { auth } from "~/server/lib/auth";
+import { type AuthLogin, authLoginSchema } from "~/auth/composables/auth";
 
 export default defineEventHandler(async (event) => {
   const { email, password } = authLoginSchema.parse(await readBody<AuthLogin>(event));

@@ -1,5 +1,3 @@
-import { auth } from "~/server/lib/auth";
-
 export default defineEventHandler(async (event) => {
   const authRequest = auth.handleRequest(event);
   const session = await authRequest.validate();

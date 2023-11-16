@@ -29,7 +29,7 @@ export function useAuth() {
   async function login(body: AuthLogin) {
     const { data, error } = await useFetch<{ session: Session | null }>("/api/auth/login", {
       method: "POST",
-      body,
+      body: { ...body },
       transform: (data) => ({
         ...data,
         session: (data.session
@@ -54,9 +54,9 @@ export function useAuth() {
 
   // Signup handler
   async function signup(body: AuthSignup) {
-    const { data, error } = await useFetch<{ user: User }>("api/auth/signup", {
+    const { data, error } = await useFetch<{ user: User }>("/api/auth/signup", {
       method: "POST",
-      body,
+      body: { ...body },
     });
     if (error.value) throw new Error(error.value.statusMessage);
     return data.value?.user || null;

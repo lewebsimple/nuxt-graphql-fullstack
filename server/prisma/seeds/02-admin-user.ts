@@ -1,7 +1,5 @@
 import { AuthRole } from "@prisma/client";
 
-import { auth } from "~/server/lib/auth";
-
 import type { SeedFn } from "../seed";
 
 export const seedAdminUser: SeedFn = async (prisma) => {
