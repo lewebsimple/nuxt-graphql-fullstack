@@ -23,3 +23,7 @@ export const dummyWorker = new Worker<DummyJobData, DummyJobReturn>(
 dummyWorker.on("failed", async (job, error) => {
   logger.error(`Dummy job ${job?.name} failed with error: ${error.message}`);
 });
+
+dummyWorker.on("completed", async (job) => {
+  logger.success(job.returnvalue.message);
+});
