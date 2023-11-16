@@ -1,7 +1,7 @@
 {
   "name": "@lewebsimple/nuxt-graphql-fullstack",
   "description": "Nuxt 3 GraphQL fullstack boilerplate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Pascal Martineau <pascal@lewebsimple.ca>",
   "repository": {
     "type": "git",
