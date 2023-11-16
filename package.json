@@ -9,8 +9,9 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "codegen": "graphql-codegen",
-    "dev": "nuxt dev --host 0.0.0.0",
+    "dev:codegen": "graphql-codegen -w",
+    "dev:nuxt": "nuxt dev --host 0.0.0.0 --no-clear",
+    "dev": "run-p dev:*",
     "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
     "prepare": "husky install && prisma generate && nuxt prepare",
     "release": "pnpm lint && changelogen --release --push"
@@ -47,6 +48,7 @@
     "graphql-config": "^5.0.3",
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
+    "npm-run-all": "^4.1.5",
     "nuxt": "^3.8.1",
     "prisma": "^5.6.0",
     "stylelint": "^15.11.0",
