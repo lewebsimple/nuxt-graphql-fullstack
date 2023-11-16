@@ -10,7 +10,9 @@ export const seedAdminUser: SeedFn = async (prisma) => {
     password: process.env.SEED_ADMIN_PASSWORD || "changeme",
     role: AuthRole.ADMINISTRATOR,
   };
-  const existing = await prisma.authUser.findUnique({ where: { email: adminUserData.email } });
+  const existing = await prisma.authUser.findUnique({
+    where: { email: adminUserData.email },
+  });
   if (existing) {
     await auth.updateUserAttributes(existing.id, { role: adminUserData.role });
   } else {

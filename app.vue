@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { siteName } = useRuntimeConfig().public;
-useHead({ titleTemplate: (title) => (title ? `${title} | ${siteName}` : siteName) });
+useHead({
+  titleTemplate: (title) => (title ? `${title} | ${siteName}` : siteName),
+});
 </script>
 
 <template>

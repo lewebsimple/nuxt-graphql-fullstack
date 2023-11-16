@@ -26,5 +26,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // Provide urql client
   const headers = { ...useRequestHeaders(), origin: useRequestURL().origin };
-  nuxtApp.vueApp.use(urql, { url: `${origin}/api/graphql`, exchanges, fetchOptions: { headers } });
+  nuxtApp.vueApp.use(urql, {
+    url: `${origin}/api/graphql`,
+    exchanges,
+    fetchOptions: { headers },
+  });
 });

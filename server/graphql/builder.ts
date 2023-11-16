@@ -22,12 +22,18 @@ export const builder = new SchemaBuilder<{
 }>({
   authScopes,
   plugins: [
-    ScopeAuthPlugin, // Wrap this plugin around all other plugins
+    ScopeAuthPlugin, // This plugin should always come first
     PrismaPlugin,
     PrismaUtils,
     RelayPlugin,
   ],
-  prisma: { client: prisma, dmmf: Prisma.dmmf, filterConnectionTotalCount: true },
+  prisma: {
+    client: prisma,
+    dmmf: Prisma.dmmf,
+    exposeDescriptions: true,
+    filterConnectionTotalCount: true,
+    onUnusedQuery: process.env.NODE_ENV === "production" ? null : "warn",
+  },
   relayOptions: {
     clientMutationId: "omit",
     cursorType: "String",

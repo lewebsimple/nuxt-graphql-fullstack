@@ -7,7 +7,11 @@ export type Scalars = {
   Upload: { Input: File; Output: never };
 };
 
-export const DateTimeScalar = builder.addScalarType("DateTime", DateTimeResolver, {});
+export const DateTimeScalar = builder.addScalarType(
+  "DateTime",
+  DateTimeResolver,
+  {},
+);
 
 export const UploadScalar = builder.scalarType("Upload", {
   serialize: () => {

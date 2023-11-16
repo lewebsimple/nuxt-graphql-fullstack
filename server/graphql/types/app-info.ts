@@ -2,8 +2,8 @@ import { version } from "~/package.json";
 
 import { builder } from "../builder";
 
-// Application info queries
 export const AppInfoQueries = builder.queryFields((t) => ({
+  // Application version
   version: t.string({
     description: "Current application version",
     resolve: () => `v${version}`,
@@ -11,8 +11,8 @@ export const AppInfoQueries = builder.queryFields((t) => ({
   }),
 }));
 
-// Application info mutations
 export const AppInfoMutations = builder.mutationFields((t) => ({
+  // Dummy ping mutation
   ping: t.string({
     resolve: () => "Pong",
     authScopes: { public: true },
