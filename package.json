@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "dev:codegen": "graphql-codegen -w",
+    "dev:codegen": "graphql-codegen -w > /dev/null",
     "dev:nuxt": "nuxt dev --host 0.0.0.0 --no-clear",
     "dev": "run-p dev:*",
     "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
