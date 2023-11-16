@@ -6,6 +6,8 @@ import type { FormSubmitEvent } from "#ui/types";
 const { signup } = useAuth();
 const { t } = useI18n();
 
+const refAuthSignupForm = ref();
+
 const state = ref<AuthSignup>({ email: "", password: "", role: AuthRole.VERIFIED });
 
 const roleOptions = [
@@ -17,7 +19,7 @@ const isSubmitting = ref(false);
 const submitAttrs = computed(() => ({
   block: true,
   color: <any>isSubmitting.value ? "gray" : "primary",
-  disabled: isSubmitting.value,
+  disabled: isSubmitting.value || refAuthSignupForm.value?.errors.length > 0,
   label: isSubmitting.value ? t("auth.signing_up") : t("auth.signup"),
   loading: isSubmitting.value,
   type: "submit",
@@ -49,7 +51,7 @@ async function onSubmit(event: FormSubmitEvent<AuthSignup>) {
 </script>
 
 <template>
-  <UForm :schema="authLoginSchema" :state="state" @submit="onSubmit">
+  <UForm ref="refAuthSignupForm" :schema="authLoginSchema" :state="state" @submit="onSubmit">
     <div class="form-wrapper">
       <UFormGroup name="email" :label="$t('email')">
         <UInput v-model="state.email" type="email" />
