@@ -35,5 +35,11 @@ export type VersionQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type VersionQuery = { __typename?: 'Query', version: string };
 
+export type PingMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PingMutation = { __typename?: 'Mutation', ping: string };
+
 
 export const VersionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Version"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"version"}}]}}]} as unknown as DocumentNode<VersionQuery, VersionQueryVariables>;
+export const PingDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Ping"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping"}}]}}]} as unknown as DocumentNode<PingMutation, PingMutationVariables>;

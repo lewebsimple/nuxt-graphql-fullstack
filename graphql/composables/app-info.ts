@@ -1,4 +1,4 @@
-import { useQuery } from "@urql/vue";
+import { useMutation, useQuery } from "@urql/vue";
 
 export async function useVersion() {
   const { data, error } = await useQuery<VersionQuery>({
@@ -12,4 +12,16 @@ export async function useVersion() {
     throw createError({ statusCode: 500, message: error.value.message });
   }
   return { version: data.value?.version };
+}
+
+export function usePing() {
+  const { executeMutation: ping } = useMutation<PingMutation, PingMutationVariables>(
+    graphql(`
+      mutation Ping {
+        ping
+      }
+    `),
+  );
+
+  return { ping };
 }

@@ -4,7 +4,7 @@ export default {
   projects: {
     default: {
       schema: "graphql/schema.graphql",
-      documents: ["{pages|components}**/*.vue", "composables/**/*.ts"],
+      documents: ["graphql/**/*.{vue,ts}"],
       extensions: {
         codegen: {
           generates: {

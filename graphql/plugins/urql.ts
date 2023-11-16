@@ -1,11 +1,11 @@
-import urql, { cacheExchange, fetchExchange, ssrExchange } from "@urql/vue";
+import urql, { cacheExchange, fetchExchange, type SSRData, ssrExchange } from "@urql/vue";
 
 import { useState } from "#app";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { origin } = useRequestURL();
   const ssr = ssrExchange({ isClient: process.client });
-  const urqlState = useState<ReturnType<typeof ssr.extractData>>("urql");
+  const urqlState = useState<SSRData>("urql");
 
   // Extract SSR payload on the server
   if (process.server) {

@@ -14,6 +14,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  */
 const documents = {
     "\n      query Version {\n        version\n      }\n    ": types.VersionDocument,
+    "\n      mutation Ping {\n        ping\n      }\n    ": types.PingDocument,
 };
 
 /**
@@ -34,6 +35,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n      query Version {\n        version\n      }\n    "): (typeof documents)["\n      query Version {\n        version\n      }\n    "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n      mutation Ping {\n        ping\n      }\n    "): (typeof documents)["\n      mutation Ping {\n        ping\n      }\n    "];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
