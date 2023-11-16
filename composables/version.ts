@@ -14,8 +14,5 @@ export async function useVersion() {
   if (error.value) {
     throw createError({ statusCode: 500, message: error.value.message });
   }
-  if (!data.value) {
-    throw createError({ statusCode: 500, message: "Version inconnue" });
-  }
-  return { version: data.value.version };
+  return { version: data.value?.version };
 }

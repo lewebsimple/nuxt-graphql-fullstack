@@ -11,8 +11,5 @@ export type AuthScopes = {
 export const authScopes = async (context: Context) => ({
   public: true,
   isAuthenticated: !!context.session?.user,
-  hasAuthRole: (role: AuthRole) =>
-    context.session?.user
-      ? ["ADMINISTRATOR", role].includes(context.session.user.role)
-      : false,
+  hasAuthRole: (role: AuthRole) => (context.session?.user ? ["ADMINISTRATOR", role].includes(context.session.user.role) : false),
 });

@@ -56,11 +56,11 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0(graphql@16.8.1)
   '@lewebsimple/eslint-config':
-    specifier: ^0.8.0
-    version: 0.8.0(eslint@8.53.0)
+    specifier: ^0.8.3
+    version: 0.8.3(eslint@8.53.0)
   '@lewebsimple/stylelint-config':
-    specifier: ^0.8.0
-    version: 0.8.0(postcss@8.4.31)(stylelint@15.11.0)
+    specifier: ^0.8.3
+    version: 0.8.3(postcss@8.4.31)(stylelint@15.11.0)
   '@nuxt/devtools':
     specifier: latest
     version: 1.0.2(nuxt@3.8.1)(vite@4.5.0)
@@ -1986,8 +1986,8 @@ packages:
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
     dev: true
 
-  /@lewebsimple/eslint-config@0.8.0(eslint@8.53.0):
-    resolution: {integrity: sha512-mYWb5BfuP+7HsjmdF6luiYThGVjSddNDhBTtQ6CHrI7bIfLYc9Rw9tk/YdIxRoPMF83arcKaii72R6VCEb6znQ==}
+  /@lewebsimple/eslint-config@0.8.3(eslint@8.53.0):
+    resolution: {integrity: sha512-V8O3ME1Yacyk6gAzE326Nsgu42TOwLtiGe8SXhA/vdjLY7BN0pmp1U9vY9/qghU4u0yWEphpMnAKd3Y2vKzE3Q==}
     peerDependencies:
       eslint: ^8
     dependencies:
@@ -2011,8 +2011,8 @@ packages:
       - supports-color
     dev: true
 
-  /@lewebsimple/stylelint-config@0.8.0(postcss@8.4.31)(stylelint@15.11.0):
-    resolution: {integrity: sha512-HeIjHAieaScpjMMF/awWIWs4d4Jx3sjbiCie0KfBIPcfKKD9xMkTcfzQst6pah92y3kvZudnFG849wg/bjfxYQ==}
+  /@lewebsimple/stylelint-config@0.8.3(postcss@8.4.31)(stylelint@15.11.0):
+    resolution: {integrity: sha512-gIRBU+Uccc06fp4ROwiV0KtMAEaqwXMuZSZDgDwTfOu2ZG7Z0ekeU74u0dWDGvv59arJ5Sn6rP6O0APz2fWdsQ==}
     peerDependencies:
       stylelint: ^15
     dependencies:
