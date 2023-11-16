@@ -3,7 +3,6 @@ import type { FormSubmitEvent } from "#ui/types";
 
 const { login } = useAuth();
 
-const refAuthLoginForm = ref();
 const state = ref<AuthLogin>({ email: "", password: "" });
 
 const isSubmitting = ref(false);
@@ -37,7 +36,7 @@ async function onSubmit(event: FormSubmitEvent<AuthLogin>) {
 </script>
 
 <template>
-  <UForm ref="refAuthLoginForm" :schema="authLoginSchema" :state="state" @submit="onSubmit">
+  <UForm :schema="authLoginSchema" :state="state" @submit="onSubmit">
     <div class="form-wrapper">
       <UFormGroup name="email" label="Courriel">
         <UInput v-model="state.email" type="email" />

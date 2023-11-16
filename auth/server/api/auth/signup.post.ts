@@ -6,8 +6,8 @@ export default defineEventHandler(async (event) => {
   }
   const { email, password, role } = authSignupSchema.parse(await readBody<AuthSignup>(event));
   const user = await auth.createUser({
-    key: { providerId: "email", providerUserId: email, password },
-    attributes: { email, role },
+    key: { providerId: "email", providerUserId: email.toLowerCase(), password },
+    attributes: { email: email.toLocaleLowerCase(), role },
   });
   return { user };
 });

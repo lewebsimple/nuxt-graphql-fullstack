@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { logout } = useAuth();
 
-const refAuthLogoutForm = ref();
 const state = ref({});
 
 const isSubmitting = ref(false);
@@ -35,7 +34,7 @@ async function onSubmit() {
 </script>
 
 <template>
-  <UForm ref="refAuthLogoutForm" :state="state" @submit="onSubmit">
+  <UForm :state="state" @submit="onSubmit">
     <UFormGroup name="submit">
       <UButton v-bind="submitAttrs" />
     </UFormGroup>
