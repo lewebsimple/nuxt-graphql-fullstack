@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const { t } = useI18n();
-useHead({ title: t("home") });
+useHead({ title: "Home" });
 </script>
 
 <template>
-  <div id="page-home">
-    <h1 class="h1">{{ $t("home") }}</h1>
-  </div>
+  <div id="page-home">...</div>
 </template>

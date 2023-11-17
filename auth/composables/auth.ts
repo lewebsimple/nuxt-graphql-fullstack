@@ -4,15 +4,15 @@ import { z } from "zod";
 
 // Authentication login schema
 export const authLoginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
+  email: z.string().email("Courriel invalide"),
+  password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
 });
 export type AuthLogin = z.infer<typeof authLoginSchema>;
 
 // Authentication signup schema
 export const authSignupSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
+  email: z.string().email("Courriel invalide"),
+  password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
   role: z.nativeEnum(AuthRole),
 });
 export type AuthSignup = z.infer<typeof authSignupSchema>;

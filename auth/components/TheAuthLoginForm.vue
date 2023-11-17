@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from "#ui/types";
 
-const { t } = useI18n();
 const { login } = useAuth();
 
 const refAuthLoginForm = ref();
@@ -11,8 +10,8 @@ const isSubmitting = ref(false);
 const submitAttrs = computed(() => ({
   block: true,
   color: <any>isSubmitting.value ? "gray" : "primary",
-  disabled: isSubmitting.value || refAuthLoginForm.value?.errors.length > 0,
-  label: isSubmitting.value ? t("auth.logging_in") : t("auth.login"),
+  disabled: isSubmitting.value,
+  label: isSubmitting.value ? "Connexion en cours..." : "Connexion",
   loading: isSubmitting.value,
   type: "submit",
   variant: <any>"solid",
@@ -26,8 +25,8 @@ async function onSubmit(event: FormSubmitEvent<AuthLogin>) {
     await useRouter().replace(redirect);
   } catch (error) {
     useToast().add({
-      title: t("error"),
-      description: t("auth.login_failed_description"),
+      title: "Échec de la connexion",
+      description: "Veuillez vérifier vos identifiants",
       icon: "i-heroicons-x-circle",
       color: "red",
     });
@@ -40,10 +39,10 @@ async function onSubmit(event: FormSubmitEvent<AuthLogin>) {
 <template>
   <UForm ref="refAuthLoginForm" :schema="authLoginSchema" :state="state" @submit="onSubmit">
     <div class="form-wrapper">
-      <UFormGroup name="email" :label="$t('email')">
+      <UFormGroup name="email" label="Courriel">
         <UInput v-model="state.email" type="email" />
       </UFormGroup>
-      <UFormGroup name="password" :label="$t('password')">
+      <UFormGroup name="password" label="Mot de passe">
         <UPasswordInput v-model="state.password" />
       </UFormGroup>
       <UFormGroup name="submit">
