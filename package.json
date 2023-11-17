@@ -9,9 +9,7 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "dev:codegen": "graphql-codegen -w > /dev/null",
-    "dev:nuxt": "nuxt dev --host 0.0.0.0 --no-clear",
-    "dev": "run-p dev:*",
+    "dev": "nuxt dev --host 0.0.0.0 --no-clear",
     "lint": "eslint --fix . && stylelint --fix **/*.{css,scss,vue}",
     "prepare": "husky install && prisma generate && nuxt prepare",
     "release": "pnpm lint && changelogen --release --push"
@@ -35,6 +33,7 @@
     "graphql-scalars": "^1.22.4",
     "graphql-yoga": "^5.0.0",
     "lucia": "^2.7.4",
+    "vite-plugin-graphql-codegen": "^3.3.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {
