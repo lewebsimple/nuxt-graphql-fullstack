@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.3
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.2...v0.2.3)
+
+### 🚀 Enhancements
+
+- Disable login / signup forms if invalid state ([0036e8b](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/0036e8b))
+
+### 💅 Refactors
+
+- Ui layer with Tailwind CSS / Nuxt UI ([ea13486](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ea13486))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.2.2
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.1...v0.2.2)
