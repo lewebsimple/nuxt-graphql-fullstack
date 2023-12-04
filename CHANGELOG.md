@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.2.4
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.3...v0.2.4)
+
+### 🚀 Enhancements
+
+- Backport stuff from real-world projects ([f085f04](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/f085f04))
+
+### 💅 Refactors
+
+- Better project structure ([96ecaf1](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/96ecaf1))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.2.3
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.2...v0.2.3)
