@@ -2,7 +2,7 @@ const queues = [dummyQueue];
 const workers = [dummyWorker];
 
 export default defineNitroPlugin(async (nitroApp) => {
-  await Promise.all(Object.values(queues).map((queue) => queue.obliterate()));
+  await Promise.all(Object.values(queues).map((queue) => queue.obliterate({ force: true })));
   logger.success(`${Object.keys(queues).length} job queue(s) cleared`);
 
   Function.prototype(workers);

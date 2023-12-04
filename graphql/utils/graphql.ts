@@ -19,11 +19,37 @@ export type Scalars = {
   Upload: { input: File; output: File; }
 };
 
+export enum AuthRole {
+  Administrator = 'ADMINISTRATOR',
+  Unverified = 'UNVERIFIED',
+  Verified = 'VERIFIED'
+}
+
+export type AuthRoleFilter = {
+  equals?: InputMaybe<AuthRole>;
+  in?: InputMaybe<Array<AuthRole>>;
+  notIn?: InputMaybe<Array<AuthRole>>;
+};
+
 export type AuthUser = Node & {
   __typename?: 'AuthUser';
   email: Scalars['String']['output'];
   globalId: Scalars['ID']['output'];
   id: Scalars['ID']['output'];
+  role: AuthRole;
+};
+
+export type AuthUserFilter = {
+  role?: InputMaybe<AuthRoleFilter>;
+};
+
+export type AuthUserOrderBy = {
+  email?: InputMaybe<OrderBy>;
+  role?: InputMaybe<OrderBy>;
+};
+
+export type AuthUserUniqueFilter = {
+  email: Scalars['String']['input'];
 };
 
 export type Mutation = {
@@ -34,6 +60,11 @@ export type Mutation = {
 export type Node = {
   globalId: Scalars['ID']['output'];
 };
+
+export enum OrderBy {
+  Asc = 'Asc',
+  Desc = 'Desc'
+}
 
 export type PageInfo = {
   __typename?: 'PageInfo';
@@ -56,6 +87,8 @@ export type QueryAuthUsersArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  orderBy: AuthUserOrderBy;
+  where: AuthUserFilter;
 };
 
 export type QueryAuthUsersConnection = {

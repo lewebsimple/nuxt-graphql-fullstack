@@ -5,6 +5,7 @@ import type PrismaTypes from "@pothos/plugin-prisma/generated";
 import PrismaUtils from "@pothos/plugin-prisma-utils";
 import RelayPlugin from "@pothos/plugin-relay";
 import ScopeAuthPlugin from "@pothos/plugin-scope-auth";
+import SimpleObjectsPlugin from "@pothos/plugin-simple-objects";
 import { Prisma } from "@prisma/client";
 
 import { type Scalars } from "~/graphql/server/types/scalars";
@@ -22,6 +23,7 @@ export const builder = new SchemaBuilder<{
     PrismaPlugin,
     PrismaUtils,
     RelayPlugin,
+    SimpleObjectsPlugin,
   ],
   prisma: {
     client: prisma,

@@ -3,8 +3,10 @@
     @apply bg-white dark:bg-black;
   }
 
-  .divide-y,
-  .divide-x {
+  *,
+  ::before,
+  ::after {
+    @apply border-gray-200 dark:border-gray-800;
     @apply divide-gray-200 dark:divide-gray-800;
   }
 }
