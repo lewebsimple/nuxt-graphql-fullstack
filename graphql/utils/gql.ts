@@ -15,6 +15,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
 const documents = {
     "\n      query Version {\n        version\n      }\n    ": types.VersionDocument,
     "\n      mutation Ping {\n        ping\n      }\n    ": types.PingDocument,
+    "\n  fragment PageInfo on PageInfo {\n    hasNextPage\n    hasPreviousPage\n    startCursor\n    endCursor\n  }\n": types.PageInfoFragmentDoc,
 };
 
 /**
@@ -39,6 +40,10 @@ export function graphql(source: "\n      query Version {\n        version\n     
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n      mutation Ping {\n        ping\n      }\n    "): (typeof documents)["\n      mutation Ping {\n        ping\n      }\n    "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment PageInfo on PageInfo {\n    hasNextPage\n    hasPreviousPage\n    startCursor\n    endCursor\n  }\n"): (typeof documents)["\n  fragment PageInfo on PageInfo {\n    hasNextPage\n    hasPreviousPage\n    startCursor\n    endCursor\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

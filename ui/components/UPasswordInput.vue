@@ -1,10 +1,8 @@
 <script setup lang="ts">
 const props = defineProps<{ modelValue: string | undefined }>();
 const emit = defineEmits<{ (event: "update:modelValue", value: string | undefined): void }>();
-const proxy = computed({
-  get: () => props.modelValue,
-  set: (value) => emit("update:modelValue", value),
-});
+const proxy = computed({ get: () => props.modelValue, set: (value) => emit("update:modelValue", value) });
+
 const showPassword = ref(false);
 </script>
 

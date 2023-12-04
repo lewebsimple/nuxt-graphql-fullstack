@@ -20,13 +20,7 @@ async function onSubmit() {
     await logout();
     await useRouter().replace("/");
   } catch (error) {
-    // Ignore logout errors
-    useToast().add({
-      title: "Échec de la déconnexion",
-      description: "Veuillez réessayer plus tard",
-      icon: "i-heroicons-x-circle",
-      color: "red",
-    });
+    useToaster().error("Veuillez réessayer plus tard");
   } finally {
     isSubmitting.value = false;
   }

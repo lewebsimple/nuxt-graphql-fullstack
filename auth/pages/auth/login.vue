@@ -7,7 +7,7 @@ useHead({ title: "Connexion" });
 <template>
   <div id="page-auth-login">
     <TheAuthPage title="Veuillez vous identifier">
-      <TheAuthLoginForm />
+      <FormAuthLogin />
     </TheAuthPage>
   </div>
 </template>

@@ -3,7 +3,7 @@ import type { FormSubmitEvent } from "#ui/types";
 
 const { login } = useAuth();
 
-const refAuthLoginForm = ref();
+const refFormAuthLogin = ref();
 const state = ref<AuthLogin>({ email: "", password: "" });
 
 const isSubmitting = ref(false);
@@ -24,12 +24,7 @@ async function onSubmit(event: FormSubmitEvent<AuthLogin>) {
     const redirect = useRoute().query.redirect?.toString() || "/";
     await useRouter().replace(redirect);
   } catch (error) {
-    useToast().add({
-      title: "Échec de la connexion",
-      description: "Veuillez vérifier vos identifiants",
-      icon: "i-heroicons-x-circle",
-      color: "red",
-    });
+    useToaster().error("Veuillez vérifier vos identifiants");
   } finally {
     isSubmitting.value = false;
   }
@@ -37,7 +32,7 @@ async function onSubmit(event: FormSubmitEvent<AuthLogin>) {
 </script>
 
 <template>
-  <UForm ref="refAuthLoginForm" :schema="authLoginSchema" :state="state" @submit="onSubmit">
+  <UForm form="refFormAuthLogin" :schema="authLoginSchema" :state="state" @submit="onSubmit">
     <div class="form-wrapper">
       <UFormGroup name="email" label="Courriel">
         <UInput v-model="state.email" type="email" />

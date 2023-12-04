@@ -7,7 +7,7 @@ useHead({ title: "Inscription" });
 <template>
   <div id="page-auth-signup">
     <TheAuthPage title="Veuillez vous inscrire">
-      <TheAuthSignupForm />
+      <FormAuthSignup />
     </TheAuthPage>
   </div>
 </template>

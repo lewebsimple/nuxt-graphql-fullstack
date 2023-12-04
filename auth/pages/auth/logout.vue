@@ -7,7 +7,7 @@ useHead({ title: "Déconnexion" });
 <template>
   <div id="page-auth-logout">
     <TheAuthPage title="Confirmez la déconnexion">
-      <TheAuthLogoutForm />
+      <FormAuthLogout />
     </TheAuthPage>
   </div>
 </template>

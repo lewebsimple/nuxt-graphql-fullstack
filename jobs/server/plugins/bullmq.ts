@@ -1,5 +1,3 @@
-import { logger } from "@nuxt/kit";
-
 const queues = [dummyQueue];
 const workers = [dummyWorker];
 
