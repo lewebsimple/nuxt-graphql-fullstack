@@ -35,7 +35,7 @@ async function onSubmit(event: FormSubmitEvent<AuthSignup>) {
         <UPasswordInput v-model="state.password" />
       </UFormGroup>
       <UFormGroup name="role" label="Rôle">
-        <UAuthRoleInput v-model="state.role" />
+        <AuthRoleInput v-model="state.role" />
       </UFormGroup>
       <UFormGroup name="submit">
         <UButton type="submit" block :disabled="isDisabled" :loading="isSubmitting" :label="isSubmitting ? 'Inscription en cours...' : 'Inscription'" />
