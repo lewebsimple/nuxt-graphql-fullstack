@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ layout: "blank", middleware: "has-auth-role", hasAuthRole: "ADMINISTRATOR" });
+definePageMeta({ layout: "blank", middleware: "has-auth-role", hasAuthRole: AuthRole.Administrator });
 
 useHead({ title: "Inscription" });
 </script>
