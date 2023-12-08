@@ -1,13 +1,12 @@
-import { AuthRole } from "@prisma/client";
-
 import { auth } from "~/auth/server/utils/auth";
+import { AuthRole } from "~/graphql/utils/graphql";
 import type { SeedFn } from "~/prisma/server/seed";
 
 export const seedAdminUser: SeedFn = async (prisma) => {
   const adminUserData = {
     email: process.env.SEED_ADMIN_EMAIL || "admin@example.com",
     password: process.env.SEED_ADMIN_PASSWORD || "changeme",
-    role: AuthRole.ADMINISTRATOR,
+    role: AuthRole.Administrator,
   };
   const existing = await prisma.authUser.findUnique({
     where: { email: adminUserData.email },

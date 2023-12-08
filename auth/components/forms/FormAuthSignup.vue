@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { AuthRole } from "@prisma/client";
-
 import type { FormSubmitEvent } from "#ui/types";
 
 // Form state
 const refForm = ref();
-const state = ref<AuthSignup>({ email: "", password: "", role: AuthRole.VERIFIED });
+const state = ref<AuthSignup>({ email: "", password: "", role: AuthRole.Verified });
 
 // Form submission
 const isSubmitting = ref(false);
@@ -15,7 +13,7 @@ async function onSubmit(event: FormSubmitEvent<AuthSignup>) {
   try {
     isSubmitting.value = true;
     await signup(event.data);
-    state.value = { email: "", password: "", role: "VERIFIED" };
+    state.value = { email: "", password: "", role: AuthRole.Verified };
     useToaster().success(`Le compte ${event.data.email} a été créé avec succès`);
   } catch (error) {
     useToaster().error("Le courriel est déjà utilisé ou une erreur est survenue");

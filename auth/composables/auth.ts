@@ -1,6 +1,7 @@
-import { AuthRole } from "@prisma/client";
 import { type Session, type User } from "lucia";
 import { z } from "zod";
+
+import { AuthRole } from "~/graphql/utils/graphql";
 
 // Authentication login schema
 export const authLoginSchema = z.object({
