@@ -1,4 +1,4 @@
-import { useQuery } from "@urql/vue";
+import { useMutation, useQuery } from "@urql/vue";
 
 const theAuthUserFragment = graphql(`
   fragment TheAuthUser on AuthUser {
@@ -46,4 +46,16 @@ export async function useAuthUsers() {
       () => data.value?.authUserFindMany.edges?.map((edge) => edge?.node).filter((authUser): authUser is TheAuthUserFragment => !!authUser) || [],
     ),
   };
+}
+
+export function useAuthUserMutations() {
+  // Destroy many AuthUsers
+  const { executeMutation: authUserDestroyMany } = useMutation(
+    graphql(`
+      mutation AuthUserDestroyMany($authUserIds: [String!]!) {
+        authUserDestroyMany(authUserIds: $authUserIds)
+      }
+    `),
+  );
+  return { authUserDestroyMany };
 }

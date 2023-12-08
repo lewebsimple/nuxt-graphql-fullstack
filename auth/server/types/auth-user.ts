@@ -89,3 +89,16 @@ export const AuthUserQueries = builder.queryFields((t) => ({
     },
   }),
 }));
+
+export const AuthUserMutations = builder.mutationFields((t) => ({
+  // Destroy many AuthUsers
+  authUserDestroyMany: t.field({
+    type: "Int",
+    nullable: true,
+    args: { authUserIds: t.arg.stringList({ required: true }) },
+    resolve: async (_root, { authUserIds }) => {
+      const { count } = await prisma.authUser.deleteMany({ where: { id: { in: authUserIds } } });
+      return count;
+    },
+  }),
+}));
