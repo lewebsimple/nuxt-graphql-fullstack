@@ -10,7 +10,7 @@ const roleOptions = authRoleOptions(true);
 </script>
 
 <template>
-  <div class="flex items-center gap-2">
+  <div class="flex flex-wrap items-center gap-2">
     <USearchInput v-model="proxy.search" />
     <USelectOptional v-model="proxy.role" :options="roleOptions" />
     <UButton v-if="canReset" color="gray" variant="link" icon="i-heroicons-x-mark" :padded="false" @click="onReset" />

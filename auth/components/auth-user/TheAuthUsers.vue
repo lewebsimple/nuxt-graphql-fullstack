@@ -11,13 +11,13 @@ function onRefetch() {
 
 <template>
   <div class="space-y-4">
-    <div class="flex items-center gap-4">
+    <div class="flex flex-wrap items-center gap-4">
       <h1 class="h1">Utilisateurs</h1>
       <UButton variant="soft" label="Ajouter" icon="i-heroicons-plus" to="/auth/signup" />
       <TheAuthUsersBulkActions :selected="selected" @refetch="onRefetch" />
-      <div class="relative ml-auto">
+      <div class="ml-auto text-right">
         <UCursorPagination :page-info="pageInfo" @first-page="firstPage" @next-page="nextPage" @previous-page="previousPage" />
-        <UTotalCount class="absolute top-full right-0" :total-count="totalCount" singular="utilisateur" plural="utilisateurs" />
+        <UTotalCount :total-count="totalCount" singular="utilisateur" plural="utilisateurs" />
       </div>
     </div>
     <TheAuthUsersFilters v-model="filters" />
