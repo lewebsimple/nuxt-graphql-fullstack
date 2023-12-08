@@ -10,3 +10,7 @@ export function authRoleLabel(role: AuthRole) {
       return "Administrateur";
   }
 }
+
+export function authRoleOptions(allowEmpty = false) {
+  return [...(allowEmpty ? [{ value: "", label: "Tous les rôles" }] : []), ...Object.values(AuthRole).map((role) => ({ value: role, label: authRoleLabel(role) }))];
+}

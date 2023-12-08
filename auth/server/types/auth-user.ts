@@ -33,6 +33,9 @@ export function authUserFiltersManyWhere(filters: AuthUserFiltersMany | undefine
   if (filters?.search) {
     where.email = { contains: filters.search };
   }
+  if (filters?.role) {
+    where.role = filters.role;
+  }
   return where;
 }
 
