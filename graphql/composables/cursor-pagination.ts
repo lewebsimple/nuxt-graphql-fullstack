@@ -14,8 +14,8 @@ export type CursorPagination = {
   last: number | null;
 };
 
-export function useCursorPagination(stateName: string, pageInfo: Ref<PageInfoFragment | null | undefined>, perPage = 10) {
-  const cursorPagination = useState<CursorPagination>(stateName, () => ({ after: null, before: null, first: perPage, last: null }));
+export function useCursorPagination(pageInfo: Ref<PageInfoFragment | null | undefined>, perPage = 10) {
+  const cursorPagination = ref<CursorPagination>({ after: null, before: null, first: perPage, last: null });
 
   function firstPage() {
     Object.assign(cursorPagination.value, { after: null, before: null, first: perPage, last: null });

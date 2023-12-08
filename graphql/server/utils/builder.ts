@@ -9,6 +9,7 @@ import SimpleObjectsPlugin from "@pothos/plugin-simple-objects";
 import { Prisma } from "@prisma/client";
 
 import { type Scalars } from "~/graphql/server/types/scalars";
+import { type Context } from "~/graphql/server/utils/context";
 
 // Pothos Schema Builder
 export const builder = new SchemaBuilder<{

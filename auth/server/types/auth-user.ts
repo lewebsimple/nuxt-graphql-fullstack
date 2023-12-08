@@ -15,7 +15,6 @@ export const AuthUserPrismaNode = builder.prismaNode("AuthUser", {
     email: t.exposeString("email"),
     role: t.expose("role", { type: AuthRoleEnumType }),
   }),
-  authScopes: { hasAuthRole: "ADMINISTRATOR" },
 });
 
 export const AuthUserUniqueFilter = builder.prismaWhereUnique("AuthUser", {
@@ -47,6 +46,5 @@ export const AuthUserQueries = builder.queryFields((t) => ({
     },
     totalCount: async (_root, { where }, { prisma }) => await prisma.authUser.count({ where }),
     resolve: async (query, _root, { where, orderBy }, { prisma }) => await prisma.authUser.findMany({ ...query, where, orderBy }),
-    authScopes: { hasAuthRole: "ADMINISTRATOR" },
   }),
 }));

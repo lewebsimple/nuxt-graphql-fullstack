@@ -5,7 +5,7 @@ export const AppInfoQueries = builder.queryFields((t) => ({
   version: t.string({
     description: "Current application version",
     resolve: () => `v${version}`,
-    authScopes: { public: true },
+    skipTypeScopes: true,
   }),
 }));
 
@@ -13,6 +13,6 @@ export const AppInfoMutations = builder.mutationFields((t) => ({
   // Dummy ping mutation
   ping: t.string({
     resolve: () => "Pong",
-    authScopes: { public: true },
+    skipTypeScopes: true,
   }),
 }));

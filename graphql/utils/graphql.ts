@@ -104,6 +104,11 @@ export type QueryAuthUsersConnectionEdge = {
   node: AuthUser;
 };
 
+export enum SortOrder {
+  Asc = 'asc',
+  Desc = 'desc'
+}
+
 export type VersionQueryVariables = Exact<{ [key: string]: never; }>;
 
 

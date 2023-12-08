@@ -73,4 +73,9 @@ type QueryAuthUsersConnectionEdge {
   node: AuthUser!
 }
 
+enum SortOrder {
+  asc
+  desc
+}
+
 scalar Upload

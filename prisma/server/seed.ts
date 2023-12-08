@@ -1,7 +1,7 @@
 import { seedAdminUser } from "~/auth/server/seeds/admin-user";
-import { prisma } from "~/prisma/server/utils/prisma";
+import { prisma, type PrismaClient } from "~/prisma/server/utils/prisma";
 
-export type SeedFn = (prisma: Prisma) => Promise<any>;
+export type SeedFn = (prisma: PrismaClient) => Promise<any>;
 
 async function main() {
   for (const [seedName, seedFn] of Object.entries({ seedAdminUser })) {
