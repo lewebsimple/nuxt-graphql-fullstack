@@ -30,5 +30,8 @@ const columns = [
     <template #role-header="{ column }">
       <UTableSortHeader v-model="proxySort" :label="column.label" sort-by="role" />
     </template>
+    <template #role-data="{ row }: { row: TheAuthUserFragment }">
+      {{ authRoleLabel(row.role) }}
+    </template>
   </UTable>
 </template>
