@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { filters, sort, pageInfo, firstPage, previousPage, nextPage, totalCount, fetching, refetch, authUsers } = await useAuthUsers();
+const { filters, sort, pageInfo, firstPage, previousPage, nextPage, totalCount, fetching, authUsers } = await useAuthUsers();
 </script>
 
 <template>
@@ -13,6 +13,6 @@ const { filters, sort, pageInfo, firstPage, previousPage, nextPage, totalCount, 
       </div>
     </div>
     <TheAuthUsersFilters v-model="filters" />
-    <TheAuthUsersTable :auth-users="authUsers" />
+    <TheAuthUsersTable v-model:sort="sort" :auth-users="authUsers" :loading="fetching" />
   </div>
 </template>
