@@ -1,13 +1,10 @@
-import { AuthRole } from "@prisma/client";
+import { AuthRole, type Prisma } from "@prisma/client";
 
-// AuthRole type and filter
+import { SortOrderEnum } from "~/graphql/server/types/prisma";
+import { type AuthUserFiltersMany, type AuthUserSort, AuthUserSortBy } from "~/graphql/utils/graphql";
+
 export const AuthRoleEnumType = builder.enumType(AuthRole, { name: "AuthRole" });
 
-export const AuthRoleFilter = builder.prismaFilter(AuthRole, {
-  ops: ["equals", "in", "notIn"],
-});
-
-// AuthUser Prisma node, Where and OrderBy inputs
 export const AuthUserPrismaNode = builder.prismaNode("AuthUser", {
   id: { field: "id" },
   fields: (t) => ({
@@ -17,34 +14,75 @@ export const AuthUserPrismaNode = builder.prismaNode("AuthUser", {
   }),
 });
 
-export const AuthUserUniqueFilter = builder.prismaWhereUnique("AuthUser", {
+export const AuthUserWhereUniqueInput = builder.prismaWhereUnique("AuthUser", {
+  name: "AuthUserWhereUnique",
   fields: (t) => ({
     email: t.field({ type: "String", required: true }),
   }),
 });
 
-export const AuthUserFilter = builder.prismaWhere("AuthUser", {
+export const AuthUserFiltersManyInput = builder.inputType("AuthUserFiltersMany", {
   fields: (t) => ({
-    role: AuthRoleFilter,
+    search: t.field({ type: "String", required: false }),
+    role: t.field({ type: AuthRoleEnumType, required: false }),
   }),
 });
 
-export const AuthUserOrderByInput = builder.prismaOrderBy("AuthUser", {
-  fields: {
-    email: true,
-    role: true,
-  },
+export function authUserFiltersManyWhere(filters: AuthUserFiltersMany | undefined) {
+  const where: Prisma.AuthUserWhereInput = {};
+  if (filters?.search) {
+    where.email = { contains: filters.search };
+  }
+  return where;
+}
+
+export const AuthUserSortByEnum = builder.enumType("AuthUserSortBy", {
+  values: ["email", "role"],
 });
 
+export const AuthUserSortInput = builder.inputType("AuthUserSort", {
+  fields: (t) => ({
+    by: t.field({ type: AuthUserSortByEnum, required: true }),
+    order: t.field({ type: SortOrderEnum, required: true }),
+  }),
+});
+
+export function auhtUserSortOrderBy(sort: AuthUserSort | undefined) {
+  const orderBy: Prisma.AuthUserOrderByWithRelationInput = {};
+  switch (sort?.by) {
+    case AuthUserSortBy.Email:
+      orderBy.email = sort.order;
+      break;
+    case AuthUserSortBy.Role:
+      orderBy.role = sort.order;
+      break;
+  }
+  return orderBy;
+}
+
 export const AuthUserQueries = builder.queryFields((t) => ({
-  authUsers: t.prismaConnection({
-    type: "AuthUser",
+  // Find unique AuthUser
+  authUserFindUnique: t.prismaField({
+    type: AuthUserPrismaNode,
+    nullable: true,
+    args: { where: t.arg({ type: AuthUserWhereUniqueInput, required: true }) },
+    resolve: async (query, _root, { where }, { prisma }) => await prisma.authUser.findUnique({ ...query, where }),
+  }),
+  // Find many AuthUsers
+  authUserFindMany: t.prismaConnection({
+    type: AuthUserPrismaNode,
     cursor: "id",
     args: {
-      where: t.arg({ type: AuthUserFilter, required: true }),
-      orderBy: t.arg({ type: AuthUserOrderByInput, required: true }),
+      filters: t.arg({ type: AuthUserFiltersManyInput, required: true }),
+      sort: t.arg({ type: AuthUserSortInput, required: true }),
     },
-    totalCount: async (_root, { where }, { prisma }) => await prisma.authUser.count({ where }),
-    resolve: async (query, _root, { where, orderBy }, { prisma }) => await prisma.authUser.findMany({ ...query, where, orderBy }),
+    totalCount: async (_root, { filters }, { prisma }) => await prisma.authUser.count({ where: authUserFiltersManyWhere(<AuthUserFiltersMany>filters) }),
+    resolve: async (query, _root, { filters, sort }, { prisma }) => {
+      return await prisma.authUser.findMany({
+        ...query,
+        where: authUserFiltersManyWhere(<AuthUserFiltersMany>filters),
+        orderBy: auhtUserSortOrderBy(<AuthUserSort>sort),
+      });
+    },
   }),
 }));

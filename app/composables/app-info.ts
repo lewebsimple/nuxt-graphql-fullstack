@@ -1,5 +1,10 @@
 import { useMutation, useQuery } from "@urql/vue";
 
+graphql(`
+  query TheVersion {
+    version
+  }
+`);
 export async function useVersion() {
   const { data, error } = await useQuery<VersionQuery>({
     query: graphql(`

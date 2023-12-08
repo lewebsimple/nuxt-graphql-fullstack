@@ -4,12 +4,6 @@ enum AuthRole {
   VERIFIED
 }
 
-input AuthRoleFilter {
-  equals: AuthRole
-  in: [AuthRole!]
-  notIn: [AuthRole!]
-}
-
 type AuthUser implements Node {
   email: String!
   globalId: ID!
@@ -17,16 +11,22 @@ type AuthUser implements Node {
   role: AuthRole!
 }
 
-input AuthUserFilter {
-  role: AuthRoleFilter
+input AuthUserFiltersMany {
+  role: AuthRole
+  search: String
 }
 
-input AuthUserOrderBy {
-  email: OrderBy
-  role: OrderBy
+input AuthUserSort {
+  by: AuthUserSortBy!
+  order: SortOrder!
 }
 
-input AuthUserUniqueFilter {
+enum AuthUserSortBy {
+  email
+  role
+}
+
+input AuthUserWhereUnique {
   email: String!
 }
 
@@ -43,11 +43,6 @@ interface Node {
   globalId: ID!
 }
 
-enum OrderBy {
-  Asc
-  Desc
-}
-
 type PageInfo {
   endCursor: String
   hasNextPage: Boolean!
@@ -56,19 +51,20 @@ type PageInfo {
 }
 
 type Query {
-  authUsers(after: String, before: String, first: Int, last: Int, orderBy: AuthUserOrderBy!, where: AuthUserFilter!): QueryAuthUsersConnection!
+  authUserFindMany(after: String, before: String, filters: AuthUserFiltersMany!, first: Int, last: Int, sort: AuthUserSort!): QueryAuthUserFindManyConnection!
+  authUserFindUnique(where: AuthUserWhereUnique!): AuthUser
 
   """Current application version"""
   version: String!
 }
 
-type QueryAuthUsersConnection {
-  edges: [QueryAuthUsersConnectionEdge]!
+type QueryAuthUserFindManyConnection {
+  edges: [QueryAuthUserFindManyConnectionEdge]!
   pageInfo: PageInfo!
   totalCount: Int!
 }
 
-type QueryAuthUsersConnectionEdge {
+type QueryAuthUserFindManyConnectionEdge {
   cursor: String!
   node: AuthUser!
 }

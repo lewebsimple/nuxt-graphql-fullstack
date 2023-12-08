@@ -25,12 +25,6 @@ export enum AuthRole {
   Verified = 'VERIFIED'
 }
 
-export type AuthRoleFilter = {
-  equals?: InputMaybe<AuthRole>;
-  in?: InputMaybe<Array<AuthRole>>;
-  notIn?: InputMaybe<Array<AuthRole>>;
-};
-
 export type AuthUser = Node & {
   __typename?: 'AuthUser';
   email: Scalars['String']['output'];
@@ -39,16 +33,22 @@ export type AuthUser = Node & {
   role: AuthRole;
 };
 
-export type AuthUserFilter = {
-  role?: InputMaybe<AuthRoleFilter>;
+export type AuthUserFiltersMany = {
+  role?: InputMaybe<AuthRole>;
+  search?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type AuthUserOrderBy = {
-  email?: InputMaybe<OrderBy>;
-  role?: InputMaybe<OrderBy>;
+export type AuthUserSort = {
+  by: AuthUserSortBy;
+  order: SortOrder;
 };
 
-export type AuthUserUniqueFilter = {
+export enum AuthUserSortBy {
+  Email = 'email',
+  Role = 'role'
+}
+
+export type AuthUserWhereUnique = {
   email: Scalars['String']['input'];
 };
 
@@ -61,11 +61,6 @@ export type Node = {
   globalId: Scalars['ID']['output'];
 };
 
-export enum OrderBy {
-  Asc = 'Asc',
-  Desc = 'Desc'
-}
-
 export type PageInfo = {
   __typename?: 'PageInfo';
   endCursor?: Maybe<Scalars['String']['output']>;
@@ -76,30 +71,36 @@ export type PageInfo = {
 
 export type Query = {
   __typename?: 'Query';
-  authUsers: QueryAuthUsersConnection;
+  authUserFindMany: QueryAuthUserFindManyConnection;
+  authUserFindUnique?: Maybe<AuthUser>;
   /** Current application version */
   version: Scalars['String']['output'];
 };
 
 
-export type QueryAuthUsersArgs = {
+export type QueryAuthUserFindManyArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
+  filters: AuthUserFiltersMany;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
-  orderBy: AuthUserOrderBy;
-  where: AuthUserFilter;
+  sort: AuthUserSort;
 };
 
-export type QueryAuthUsersConnection = {
-  __typename?: 'QueryAuthUsersConnection';
-  edges: Array<Maybe<QueryAuthUsersConnectionEdge>>;
+
+export type QueryAuthUserFindUniqueArgs = {
+  where: AuthUserWhereUnique;
+};
+
+export type QueryAuthUserFindManyConnection = {
+  __typename?: 'QueryAuthUserFindManyConnection';
+  edges: Array<Maybe<QueryAuthUserFindManyConnectionEdge>>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int']['output'];
 };
 
-export type QueryAuthUsersConnectionEdge = {
-  __typename?: 'QueryAuthUsersConnectionEdge';
+export type QueryAuthUserFindManyConnectionEdge = {
+  __typename?: 'QueryAuthUserFindManyConnectionEdge';
   cursor: Scalars['String']['output'];
   node: AuthUser;
 };
@@ -108,6 +109,11 @@ export enum SortOrder {
   Asc = 'asc',
   Desc = 'desc'
 }
+
+export type TheVersionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TheVersionQuery = { __typename?: 'Query', version: string };
 
 export type VersionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -122,5 +128,6 @@ export type PingMutation = { __typename?: 'Mutation', ping: string };
 export type PageInfoFragment = { __typename?: 'PageInfo', hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null, endCursor?: string | null };
 
 export const PageInfoFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PageInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PageInfo"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}},{"kind":"Field","name":{"kind":"Name","value":"hasPreviousPage"}},{"kind":"Field","name":{"kind":"Name","value":"startCursor"}},{"kind":"Field","name":{"kind":"Name","value":"endCursor"}}]}}]} as unknown as DocumentNode<PageInfoFragment, unknown>;
+export const TheVersionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TheVersion"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"version"}}]}}]} as unknown as DocumentNode<TheVersionQuery, TheVersionQueryVariables>;
 export const VersionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Version"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"version"}}]}}]} as unknown as DocumentNode<VersionQuery, VersionQueryVariables>;
 export const PingDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Ping"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping"}}]}}]} as unknown as DocumentNode<PingMutation, PingMutationVariables>;
