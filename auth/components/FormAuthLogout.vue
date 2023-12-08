@@ -1,19 +1,12 @@
 <script setup lang="ts">
-const { logout } = useAuth();
-
+// Form state
+const refForm = ref();
 const state = ref({});
 
+// Form submission
+const { logout } = useAuth();
 const isSubmitting = ref(false);
-const submitAttrs = computed(() => ({
-  block: true,
-  color: <any>(isSubmitting.value ? "gray" : "primary"),
-  disabled: isSubmitting.value,
-  label: isSubmitting.value ? "Déconnexion en cours..." : "Déconnexion",
-  loading: isSubmitting.value,
-  type: "submit",
-  variant: <any>(isSubmitting.value ? "ghost" : "solid"),
-}));
-
+const isDisabled = computed(() => isSubmitting.value);
 async function onSubmit() {
   try {
     isSubmitting.value = true;
@@ -28,9 +21,9 @@ async function onSubmit() {
 </script>
 
 <template>
-  <UForm :state="state" @submit="onSubmit">
+  <UForm ref="refForm" :state="state" @submit="onSubmit">
     <UFormGroup name="submit">
-      <UButton v-bind="submitAttrs" />
+      <UButton type="submit" block :disabled="isDisabled" :loading="isSubmitting" :label="isSubmitting ? 'Déconnexion en cours...' : 'Déconnexion'" />
     </UFormGroup>
   </UForm>
 </template>

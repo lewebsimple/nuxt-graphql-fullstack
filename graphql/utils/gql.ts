@@ -16,6 +16,8 @@ const documents = {
     "\n  query TheVersion {\n    version\n  }\n": types.TheVersionDocument,
     "\n      query Version {\n        version\n      }\n    ": types.VersionDocument,
     "\n      mutation Ping {\n        ping\n      }\n    ": types.PingDocument,
+    "\n  fragment TheAuthUser on AuthUser {\n    id\n    email\n    role\n  }\n": types.TheAuthUserFragmentDoc,
+    "\n      query TheAuthUsers($filters: AuthUserFiltersMany!, $sort: AuthUserSort!, $after: String, $before: String, $first: Int, $last: Int) {\n        authUserFindMany(filters: $filters, sort: $sort, after: $after, before: $before, first: $first, last: $last) {\n          edges {\n            node {\n              ...TheAuthUser\n            }\n          }\n          totalCount\n          pageInfo {\n            ...PageInfo\n          }\n        }\n      }\n    ": types.TheAuthUsersDocument,
     "\n  fragment PageInfo on PageInfo {\n    hasNextPage\n    hasPreviousPage\n    startCursor\n    endCursor\n  }\n": types.PageInfoFragmentDoc,
 };
 
@@ -45,6 +47,14 @@ export function graphql(source: "\n      query Version {\n        version\n     
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n      mutation Ping {\n        ping\n      }\n    "): (typeof documents)["\n      mutation Ping {\n        ping\n      }\n    "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  fragment TheAuthUser on AuthUser {\n    id\n    email\n    role\n  }\n"): (typeof documents)["\n  fragment TheAuthUser on AuthUser {\n    id\n    email\n    role\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n      query TheAuthUsers($filters: AuthUserFiltersMany!, $sort: AuthUserSort!, $after: String, $before: String, $first: Int, $last: Int) {\n        authUserFindMany(filters: $filters, sort: $sort, after: $after, before: $before, first: $first, last: $last) {\n          edges {\n            node {\n              ...TheAuthUser\n            }\n          }\n          totalCount\n          pageInfo {\n            ...PageInfo\n          }\n        }\n      }\n    "): (typeof documents)["\n      query TheAuthUsers($filters: AuthUserFiltersMany!, $sort: AuthUserSort!, $after: String, $before: String, $first: Int, $last: Int) {\n        authUserFindMany(filters: $filters, sort: $sort, after: $after, before: $before, first: $first, last: $last) {\n          edges {\n            node {\n              ...TheAuthUser\n            }\n          }\n          totalCount\n          pageInfo {\n            ...PageInfo\n          }\n        }\n      }\n    "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

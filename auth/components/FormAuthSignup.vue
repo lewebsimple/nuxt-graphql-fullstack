@@ -3,28 +3,14 @@ import { AuthRole } from "@prisma/client";
 
 import type { FormSubmitEvent } from "#ui/types";
 
-const { signup } = useAuth();
-
-const refFormAuthSignup = ref();
-
+// Form state
+const refForm = ref();
 const state = ref<AuthSignup>({ email: "", password: "", role: AuthRole.VERIFIED });
 
-const roleOptions = [
-  { value: AuthRole.VERIFIED, label: "Utilisateur" },
-  { value: AuthRole.ADMINISTRATOR, label: "Administrateur" },
-];
-
+// Form submission
 const isSubmitting = ref(false);
-const submitAttrs = computed(() => ({
-  block: true,
-  color: <any>isSubmitting.value ? "gray" : "primary",
-  disabled: isSubmitting.value || refFormAuthSignup.value?.errors.length > 0,
-  label: isSubmitting.value ? "Inscription en cours..." : "Inscription",
-  loading: isSubmitting.value,
-  type: "submit",
-  variant: <any>"solid",
-}));
-
+const isDisabled = computed(() => isSubmitting.value || refForm.value?.errors.length > 0);
+const { signup } = useAuth();
 async function onSubmit(event: FormSubmitEvent<AuthSignup>) {
   try {
     isSubmitting.value = true;
@@ -40,7 +26,7 @@ async function onSubmit(event: FormSubmitEvent<AuthSignup>) {
 </script>
 
 <template>
-  <UForm form="refAuthSignup" :schema="authLoginSchema" :state="state" @submit="onSubmit">
+  <UForm form="refForm" :schema="authLoginSchema" :state="state" @submit="onSubmit">
     <div class="form-wrapper">
       <UFormGroup name="email" label="Courriel">
         <UInput v-model="state.email" type="email" />
@@ -49,10 +35,10 @@ async function onSubmit(event: FormSubmitEvent<AuthSignup>) {
         <UPasswordInput v-model="state.password" />
       </UFormGroup>
       <UFormGroup name="role" label="Rôle">
-        <USelect v-model="state.role" :options="roleOptions" />
+        <UAuthRoleInput v-model="state.role" />
       </UFormGroup>
       <UFormGroup name="submit">
-        <UButton v-bind="submitAttrs" />
+        <UButton type="submit" block :disabled="isDisabled" :loading="isSubmitting" :label="isSubmitting ? 'Inscription en cours...' : 'Inscription'" />
       </UFormGroup>
     </div>
   </UForm>
