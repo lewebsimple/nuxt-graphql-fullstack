@@ -14,7 +14,7 @@ const actions = {
 <template>
   <UActionsDropdown v-if="selected.length > 0" :actions="actions" @refetch="$emit('refetch')">
     <slot>
-      <UButton variant="ghost" trailing-icon="i-heroicons-ellipsis-vertical" />
+      <UButton color="white" variant="outline" trailing-icon="i-heroicons-chevron-down" label="Actions" />
     </slot>
     <template #destroy-action="{ onClose, onSuccess }">
       <FormAuthUserDestroy :auth-users="selected" @cancel="onClose" @success="onSuccess" />

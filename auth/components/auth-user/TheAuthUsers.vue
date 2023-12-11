@@ -16,15 +16,13 @@ watch([filters, sort], onRefetch, { deep: true });
     <div class="flex flex-wrap items-center gap-4">
       <h1 class="h1">Utilisateurs</h1>
       <TheAuthUsersCreate @refetch="onRefetch" />
-      <TheAuthUsersActions v-if="selected.length > 0" :selected="selected" @refetch="onRefetch">
-        <UButton color="white" variant="outline" trailing-icon="i-heroicons-chevron-down" label="Actions" />
-      </TheAuthUsersActions>
+      <TheAuthUsersActions v-if="selected.length > 0" :selected="selected" @refetch="onRefetch" />
       <div class="ml-auto text-right">
         <UCursorPagination :page-info="pageInfo" @first-page="firstPage" @next-page="nextPage" @previous-page="previousPage" />
         <UTotalCount :total-count="totalCount" singular="utilisateur" plural="utilisateurs" />
       </div>
     </div>
     <TheAuthUsersFilters v-model="filters" />
-    <TheAuthUsersTable v-model:selected="selected" v-model:sort="sort" :auth-users="authUsers" :loading="fetching" @refetch="onRefetch" />
+    <TheAuthUsersTable v-model:selected="selected" v-model:sort="sort" :rows="authUsers" :loading="fetching" @refetch="onRefetch" />
   </div>
 </template>

@@ -1,9 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
-  authUsers: TheAuthUserFragment[];
-  sort: AuthUserSort;
-  selected: TheAuthUserFragment[];
-}>();
+const props = defineProps<{ rows: TheAuthUserFragment[]; sort: AuthUserSort; selected: TheAuthUserFragment[] }>();
 const emit = defineEmits<{
   (event: "update:selected", value: TheAuthUserFragment[]): void;
   (event: "update:sort", value: AuthUserSort): void;
@@ -11,6 +7,7 @@ const emit = defineEmits<{
 }>();
 
 const proxySort = computed({ get: () => props.sort, set: (value) => emit("update:sort", value) });
+
 const proxySelected = computed({ get: () => props.selected, set: (value) => emit("update:selected", value) });
 function onSelect(row: TheAuthUserFragment) {
   const index = props.selected.findIndex((item) => item.id === row.id);
@@ -21,7 +18,7 @@ const columns = [{ key: "email", label: "Courriel", class: "w-full" }, { key: "r
 </script>
 
 <template>
-  <UTable v-model="proxySelected" :columns="columns" :rows="authUsers" @select="onSelect">
+  <UTable v-model="proxySelected" :columns="columns" :rows="rows" @select="onSelect">
     <template #email-header="{ column }">
       <UTableSortHeader v-model="proxySort" :label="column.label" sort-by="email" />
     </template>
@@ -32,7 +29,9 @@ const columns = [{ key: "email", label: "Courriel", class: "w-full" }, { key: "r
       {{ authRoleLabel(row.role) }}
     </template>
     <template #actions-data="{ row }: { row: TheAuthUserFragment }">
-      <TheAuthUsersActions :selected="[row]" @refetch="$emit('refetch')" />
+      <TheAuthUsersActions :selected="[row]" @refetch="$emit('refetch')">
+        <UButton variant="ghost" trailing-icon="i-heroicons-ellipsis-vertical" />
+      </TheAuthUsersActions>
     </template>
   </UTable>
 </template>

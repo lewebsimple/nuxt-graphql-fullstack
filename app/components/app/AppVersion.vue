@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { version } = await useVersion();
+const { version } = await useAppVersion();
 </script>
 
 <template>

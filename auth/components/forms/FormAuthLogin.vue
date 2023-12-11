@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { login } = useAuth();
+
 async function onLoginSubmit(data: AuthLogin) {
   try {
     await login(data);

@@ -1,13 +1,19 @@
 <script setup lang="ts">
 const props = defineProps<{ authUsers: TheAuthUserFragment[] }>();
 const emit = defineEmits<{ (event: "refetch"): void }>();
+
 const { authUserDestroyMany } = useAuthUserMutations();
+
 async function onAuthUserDestroySubmit() {
   try {
-    await authUserDestroyMany({ ids: props.authUsers.map(({ id }) => id) });
+    const { error } = await authUserDestroyMany({ ids: props.authUsers.map(({ id }) => id) });
+    if (error) throw new Error(error.message);
     return props.authUsers.length > 1 ? `${props.authUsers.length} utilisateurs supprimés` : `1 utilisateur supprimé`;
   } catch (error) {
-    throw new Error("La suppression a échoué.");
+    switch ((<Error>error).message) {
+      default:
+        throw new Error("La suppression a échoué.");
+    }
   }
 }
 </script>

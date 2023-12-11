@@ -1,8 +1,16 @@
 <script setup lang="ts">
 const { logout } = useAuth();
+
 async function onLogoutSubmit() {
-  await logout();
-  return "Déconnexion réussie";
+  try {
+    await logout();
+    return "Déconnexion réussie";
+  } catch (error) {
+    switch ((<Error>error).message) {
+      default:
+        throw new Error("La déconnexion a échoué.");
+    }
+  }
 }
 </script>
 

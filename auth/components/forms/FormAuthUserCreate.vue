@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { authUserCreate } = useAuthUserMutations();
+
 const defaultState = ref<AuthUserFields>({ email: "", password: "", role: AuthRole.Verified });
+
 async function onAuthUserCreateSubmit(data: AuthUserFields) {
   try {
     const { error } = await authUserCreate({ data });
