@@ -16,10 +16,15 @@ function onSelect(row: TheAuthUserFragment) {
   index === -1 ? proxySelected.value.push(row) : proxySelected.value.splice(index, 1);
 }
 
-const columns = [
-  { key: "email", label: "Courriel", class: "w-full" },
-  { key: "role", label: "Rôle" },
-];
+const columns = [{ key: "email", label: "Courriel", class: "w-full" }, { key: "role", label: "Rôle" }, { key: "actions" }];
+
+const actions = {
+  destroy: {
+    label: "Supprimer",
+    title: "Supprimer l'utilisateur",
+    icon: "i-heroicons-trash",
+  },
+};
 </script>
 
 <template>
@@ -32,6 +37,11 @@ const columns = [
     </template>
     <template #role-data="{ row }: { row: TheAuthUserFragment }">
       {{ authRoleLabel(row.role) }}
+    </template>
+    <template #actions-data>
+      <UActionsDropdown :actions="actions">
+        <UButton variant="ghost" icon="i-heroicons-ellipsis-vertical" />
+      </UActionsDropdown>
     </template>
   </UTable>
 </template>

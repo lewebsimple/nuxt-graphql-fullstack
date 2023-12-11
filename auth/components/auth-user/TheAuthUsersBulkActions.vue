@@ -12,12 +12,13 @@ const actions = {
 </script>
 
 <template>
-  <UBulkActions :selected="selected" :actions="actions" @refetch="$emit('refetch')">
+  <UActionsDropdown v-if="selected.length > 0" :actions="actions" @refetch="$emit('refetch')">
     <template #destroy-action="{ onClose, onSuccess }">
       <div class="flex justify-end items-center gap-2">
+        TODO: FormEntityDestroyMany
         <UButton color="white" variant="outline" label="Annuler" @click="onClose" />
         <UButton label="OK" @click="onSuccess" />
       </div>
     </template>
-  </UBulkActions>
+  </UActionsDropdown>
 </template>

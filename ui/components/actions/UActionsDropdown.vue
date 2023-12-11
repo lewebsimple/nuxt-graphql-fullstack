@@ -1,20 +1,19 @@
-<script setup lang="ts" generic="T">
-type BulkAction = {
-  label: string;
-  title: string;
-  icon: string;
-};
-const props = defineProps<{
-  selected: T[];
-  actions: Record<string, BulkAction>;
-}>();
+<script setup lang="ts">
+type RowAction = { label: string; title: string; icon: string; to?: string | undefined };
+const props = defineProps<{ actions: Record<string, RowAction> }>();
 const emit = defineEmits<{ (event: "refetch"): void }>();
 
 const items = computed(() => [
   Object.entries(props.actions).map(([key, action]) => ({
     label: action.label,
     icon: action.icon,
-    click: () => (currentAction.value = key),
+    click: () => {
+      if (action.to) {
+        useRouter().push(action.to);
+      } else {
+        currentAction.value = key;
+      }
+    },
   })),
 ]);
 
@@ -28,8 +27,10 @@ const onSuccess = () => {
 </script>
 
 <template>
-  <UDropdown v-if="selected.length > 0" :items="items">
-    <UButton color="white" variant="outline" label="Actions groupées" trailing-icon="i-heroicons-chevron-down" />
+  <UDropdown :items="items" @click.stop>
+    <slot>
+      <UButton color="white" variant="outline" trailing-icon="i-heroicons-chevron-down" label="Actions" />
+    </slot>
   </UDropdown>
   <template v-for="(action, key) in actions" :key="key">
     <UActionModal v-if="isShowing(key)" :title="action.title" @close="onClose">

@@ -7,6 +7,8 @@ function onRefetch() {
   selected.value = [];
   refetch();
 }
+
+// TODO: Replace link to /auth/signup with a modal
 </script>
 
 <template>
