@@ -16,6 +16,7 @@ export function useAuth() {
 
   // Authentication helpers
   const isAuthenticated = computed(() => !!session.value?.user);
+  const isAdministrator = computed(() => hasAuthRole(AuthRole.Administrator));
   const hasAuthRole = (role: AuthRole) => session.value?.user && [AuthRole.Administrator, role].includes(session.value.user.role);
 
   // Login handler
@@ -53,5 +54,5 @@ export function useAuth() {
     session.value = data.value?.session || null;
   }
 
-  return { session, isAuthenticated, hasAuthRole, login, logout };
+  return { session, isAuthenticated, isAdministrator, hasAuthRole, login, logout };
 }
