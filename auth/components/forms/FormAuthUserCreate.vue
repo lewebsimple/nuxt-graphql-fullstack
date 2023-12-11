@@ -3,7 +3,8 @@ const { authUserCreate } = useAuthUserMutations();
 const defaultState = ref<AuthUserFields>({ email: "", password: "", role: AuthRole.Verified });
 async function onAuthUserCreateSubmit(data: AuthUserFields) {
   try {
-    await authUserCreate({ data });
+    const { error } = await authUserCreate({ data });
+    if (error) throw new Error(error.message);
     return `L'utilisateur ${data.email} a été créé avec succès`;
   } catch (error) {
     switch ((<Error>error).message) {
