@@ -1,5 +1,42 @@
 # Changelog
 
+## v0.2.5
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.4...v0.2.5)
+
+### 🚀 Enhancements
+
+- USelectOptional ([6d1592c](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/6d1592c))
+- TheAuthUsersTable sort ([bc3e925](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/bc3e925))
+- UBulkActions ([c6c629b](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/c6c629b))
+- UActionModal / UActionsDropdown ([ea08f35](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ea08f35))
+- FormEntityDestroy ([fb95d6c](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/fb95d6c))
+- Add users link in app footer ([585a3d4](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/585a3d4))
+
+### 🩹 Fixes
+
+- Assets/svg/.gitkeep ([403baa8](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/403baa8))
+- Svg type definitions ([ee8e696](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/ee8e696))
+- AuthRole enum ([c015c52](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/c015c52))
+- Pseudo-mobile friendliness ([0ce72df](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/0ce72df))
+- FormAuthUserCreate error handling ([a4bb1d1](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/a4bb1d1))
+
+### 💅 Refactors
+
+- Move jobs in app layer ([38f4ff3](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/38f4ff3))
+- FormAuth* ([cad791e](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/cad791e))
+- TheAuthUsers CRUD ([8a9b20d](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/8a9b20d))
+- TheAuthUsersActions ([8eac1bb](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/8eac1bb))
+- TheAuthUsers structure ([8d75a85](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/8d75a85))
+
+### 🏡 Chore
+
+- Backport from real-world project ([7b3f0fd](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/7b3f0fd))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.2.4
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.3...v0.2.4)
