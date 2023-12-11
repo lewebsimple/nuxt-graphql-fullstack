@@ -8,7 +8,13 @@
       "request": "launch",
       "name": "Nuxt client",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "pathMappings": [
+        {
+          "url": "http://localhost:3000/_nuxt/",
+          "path": "${workspaceFolder}/"
+        }
+      ]
     },
     {
       "type": "node",

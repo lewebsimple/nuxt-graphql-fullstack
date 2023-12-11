@@ -41,15 +41,23 @@ export function useAuth() {
             }
           : null) as Session | null,
       }),
+      onResponseError: (context) => {
+        throw new Error(context.response._data?.message);
+      },
     });
-    if (error.value) throw new Error(error.value.statusMessage);
+    if (error.value) throw new Error(error.value.message);
     session.value = data.value?.session || null;
   }
 
   // Logout handler
   async function logout() {
-    const { data, error } = await useFetch<{ session: Session | null }>("/api/auth/logout", { method: "POST" });
-    if (error.value) throw new Error(error.value.statusMessage);
+    const { data, error } = await useFetch<{ session: Session | null }>("/api/auth/logout", {
+      method: "POST",
+      onResponseError: (context) => {
+        throw new Error(context.response._data?.message);
+      },
+    });
+    if (error.value) throw new Error(error.value.message);
     session.value = data.value?.session || null;
   }
 
@@ -58,8 +66,11 @@ export function useAuth() {
     const { data, error } = await useFetch<{ user: User }>("/api/auth/signup", {
       method: "POST",
       body: { ...body },
+      onResponseError: (context) => {
+        throw new Error(context.response._data?.message);
+      },
     });
-    if (error.value) throw new Error(error.value.statusMessage);
+    if (error.value) throw new Error(error.value.message);
     return data.value?.user || null;
   }
 
