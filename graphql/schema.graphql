@@ -11,6 +11,12 @@ type AuthUser implements Node {
   role: AuthRole!
 }
 
+input AuthUserCreateInput {
+  email: String!
+  password: String!
+  role: AuthRole!
+}
+
 input AuthUserFiltersMany {
   role: AuthRole
   search: String
@@ -36,6 +42,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTime
 
 type Mutation {
+  authUserCreate(data: AuthUserCreateInput!): AuthUser
   authUserDestroyMany(authUserIds: [String!]!): Int
   ping: String!
 }

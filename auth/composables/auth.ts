@@ -1,4 +1,4 @@
-import { type Session, type User } from "lucia";
+import { type Session } from "lucia";
 import { z } from "zod";
 
 import { AuthRole } from "~/graphql/utils/graphql";
@@ -10,21 +10,13 @@ export const authLoginSchema = z.object({
 });
 export type AuthLogin = z.infer<typeof authLoginSchema>;
 
-// Authentication signup schema
-export const authSignupSchema = z.object({
-  email: z.string().email("Courriel invalide"),
-  password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
-  role: z.nativeEnum(AuthRole),
-});
-export type AuthSignup = z.infer<typeof authSignupSchema>;
-
 export function useAuth() {
   // Session state initialized from server plugin / middleware
   const session = useState<Session | null>("session", () => null);
 
   // Authentication helpers
   const isAuthenticated = computed(() => !!session.value?.user);
-  const hasAuthRole = (role: AuthRole) => session.value?.user && ["ADMINISTRATOR", role].includes(session.value.user.role);
+  const hasAuthRole = (role: AuthRole) => session.value?.user && [AuthRole.Administrator, role].includes(session.value.user.role);
 
   // Login handler
   async function login(body: AuthLogin) {
@@ -61,18 +53,5 @@ export function useAuth() {
     session.value = data.value?.session || null;
   }
 
-  // Signup handler
-  async function signup(body: AuthSignup) {
-    const { data, error } = await useFetch<{ user: User }>("/api/auth/signup", {
-      method: "POST",
-      body: { ...body },
-      onResponseError: (context) => {
-        throw new Error(context.response._data?.message);
-      },
-    });
-    if (error.value) throw new Error(error.value.message);
-    return data.value?.user || null;
-  }
-
-  return { session, isAuthenticated, hasAuthRole, login, logout, signup };
+  return { session, isAuthenticated, hasAuthRole, login, logout };
 }

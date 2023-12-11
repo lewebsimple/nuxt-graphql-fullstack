@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@urql/vue";
+import { z } from "zod";
 
 const theAuthUserFragment = graphql(`
   fragment TheAuthUser on AuthUser {
@@ -48,7 +49,26 @@ export async function useAuthUsers() {
   };
 }
 
+// AuthUser fields schema
+export const authUserFieldsSchema = z.object({
+  email: z.string().email("Courriel invalide"),
+  password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
+  role: z.nativeEnum(AuthRole),
+});
+export type AuthUserFields = z.infer<typeof authUserFieldsSchema>;
+
 export function useAuthUserMutations() {
+  // Create AuthUser
+  const { executeMutation: authUserCreate } = useMutation(
+    graphql(`
+      mutation AuthUserCreate($data: AuthUserCreateInput!) {
+        authUserCreate(data: $data) {
+          ...TheAuthUser
+        }
+      }
+    `),
+  );
+
   // Destroy many AuthUsers
   const { executeMutation: authUserDestroyMany } = useMutation(
     graphql(`
@@ -57,5 +77,5 @@ export function useAuthUserMutations() {
       }
     `),
   );
-  return { authUserDestroyMany };
+  return { authUserCreate, authUserDestroyMany };
 }

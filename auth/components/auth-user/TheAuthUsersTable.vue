@@ -7,6 +7,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   (event: "update:selected", value: TheAuthUserFragment[]): void;
   (event: "update:sort", value: AuthUserSort): void;
+  (event: "refetch"): void;
 }>();
 
 const proxySort = computed({ get: () => props.sort, set: (value) => emit("update:sort", value) });
@@ -17,14 +18,6 @@ function onSelect(row: TheAuthUserFragment) {
 }
 
 const columns = [{ key: "email", label: "Courriel", class: "w-full" }, { key: "role", label: "Rôle" }, { key: "actions" }];
-
-const actions = {
-  destroy: {
-    label: "Supprimer",
-    title: "Supprimer l'utilisateur",
-    icon: "i-heroicons-trash",
-  },
-};
 </script>
 
 <template>
@@ -38,10 +31,8 @@ const actions = {
     <template #role-data="{ row }: { row: TheAuthUserFragment }">
       {{ authRoleLabel(row.role) }}
     </template>
-    <template #actions-data>
-      <UActionsDropdown :actions="actions">
-        <UButton variant="ghost" icon="i-heroicons-ellipsis-vertical" />
-      </UActionsDropdown>
+    <template #actions-data="{ row }: { row: TheAuthUserFragment }">
+      <TheAuthUserActions :auth-user="row" @refetch="$emit('refetch')" />
     </template>
   </UTable>
 </template>

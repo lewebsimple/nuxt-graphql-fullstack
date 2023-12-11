@@ -2,8 +2,6 @@
 const props = defineProps<{ selected: TheAuthUserFragment[] }>();
 const emit = defineEmits<{ (event: "refetch"): void }>();
 
-const { authUserDestroyMany } = useAuthUserMutations();
-
 const actions = {
   destroy: {
     label: "Supprimer",
@@ -16,15 +14,7 @@ const actions = {
 <template>
   <UActionsDropdown v-if="selected.length > 0" :actions="actions" @refetch="$emit('refetch')">
     <template #destroy-action="{ onClose, onSuccess }">
-      <FormEntityDestroy :entities="selected" :destroy="authUserDestroyMany" @cancel="onClose" @success="onSuccess">
-        <template #default="{ entities }: { entities: TheAuthUserFragment[] }">
-          <ul class="list-disc list-inside">
-            <li v-for="entity in entities" :key="entity.id">
-              <span>{{ entity.email }}</span>
-            </li>
-          </ul>
-        </template>
-      </FormEntityDestroy>
+      <FormAuthUserDestroy :auth-users="selected" @cancel="onClose" @success="onSuccess" />
     </template>
   </UActionsDropdown>
 </template>

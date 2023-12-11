@@ -8,14 +8,14 @@ function onRefetch() {
   refetch();
 }
 
-// TODO: Replace link to /auth/signup with a modal
+watch([filters, sort], onRefetch, { deep: true });
 </script>
 
 <template>
   <div class="space-y-4">
     <div class="flex flex-wrap items-center gap-4">
       <h1 class="h1">Utilisateurs</h1>
-      <UButton variant="soft" label="Ajouter" icon="i-heroicons-plus" to="/auth/signup" />
+      <TheAuthUsersCreate @refetch="onRefetch" />
       <TheAuthUsersBulkActions :selected="selected" @refetch="onRefetch" />
       <div class="ml-auto text-right">
         <UCursorPagination :page-info="pageInfo" @first-page="firstPage" @next-page="nextPage" @previous-page="previousPage" />
@@ -23,6 +23,6 @@ function onRefetch() {
       </div>
     </div>
     <TheAuthUsersFilters v-model="filters" />
-    <TheAuthUsersTable v-model:selected="selected" v-model:sort="sort" :auth-users="authUsers" :loading="fetching" />
+    <TheAuthUsersTable v-model:selected="selected" v-model:sort="sort" :auth-users="authUsers" :loading="fetching" @refetch="onRefetch" />
   </div>
 </template>

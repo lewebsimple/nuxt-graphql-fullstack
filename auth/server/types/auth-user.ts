@@ -90,7 +90,29 @@ export const AuthUserQueries = builder.queryFields((t) => ({
   }),
 }));
 
+export const AuthUserCreateInput = builder.inputType("AuthUserCreateInput", {
+  fields: (t) => ({
+    email: t.field({ type: "String", required: true }),
+    password: t.field({ type: "String", required: true }),
+    role: t.field({ type: AuthRoleEnumType, required: true }),
+  }),
+});
+
 export const AuthUserMutations = builder.mutationFields((t) => ({
+  // Create AuthUser
+  authUserCreate: t.prismaField({
+    type: "AuthUser",
+    nullable: true,
+    args: { data: t.arg({ type: AuthUserCreateInput, required: true }) },
+    resolve: async (query, _root, { data }, { prisma }) => {
+      const { email, password, role } = data;
+      const user = await auth.createUser({
+        key: { providerId: "email", providerUserId: email.toLowerCase(), password },
+        attributes: { email: email.toLocaleLowerCase(), role } as unknown as Lucia.DatabaseUserAttributes,
+      });
+      return await prisma.authUser.findUnique({ ...query, where: { id: user.userId } });
+    },
+  }),
   // Destroy many AuthUsers
   authUserDestroyMany: t.field({
     type: "Int",
