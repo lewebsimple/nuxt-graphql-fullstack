@@ -16,7 +16,9 @@ watch([filters, sort], onRefetch, { deep: true });
     <div class="flex flex-wrap items-center gap-4">
       <h1 class="h1">Utilisateurs</h1>
       <TheAuthUsersCreate @refetch="onRefetch" />
-      <TheAuthUsersBulkActions :selected="selected" @refetch="onRefetch" />
+      <TheAuthUsersActions v-if="selected.length > 0" :selected="selected" @refetch="onRefetch">
+        <UButton color="white" variant="outline" trailing-icon="i-heroicons-chevron-down" label="Actions" />
+      </TheAuthUsersActions>
       <div class="ml-auto text-right">
         <UCursorPagination :page-info="pageInfo" @first-page="firstPage" @next-page="nextPage" @previous-page="previousPage" />
         <UTotalCount :total-count="totalCount" singular="utilisateur" plural="utilisateurs" />

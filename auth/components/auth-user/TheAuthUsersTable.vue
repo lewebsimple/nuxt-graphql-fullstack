@@ -32,7 +32,7 @@ const columns = [{ key: "email", label: "Courriel", class: "w-full" }, { key: "r
       {{ authRoleLabel(row.role) }}
     </template>
     <template #actions-data="{ row }: { row: TheAuthUserFragment }">
-      <TheAuthUserActions :auth-user="row" @refetch="$emit('refetch')" />
+      <TheAuthUsersActions :selected="[row]" @refetch="$emit('refetch')" />
     </template>
   </UTable>
 </template>
