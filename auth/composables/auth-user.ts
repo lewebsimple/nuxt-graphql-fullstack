@@ -52,8 +52,8 @@ export function useAuthUserMutations() {
   // Destroy many AuthUsers
   const { executeMutation: authUserDestroyMany } = useMutation(
     graphql(`
-      mutation AuthUserDestroyMany($authUserIds: [String!]!) {
-        authUserDestroyMany(authUserIds: $authUserIds)
+      mutation AuthUserDestroyMany($ids: [String!]!) {
+        authUserDestroyMany(authUserIds: $ids)
       }
     `),
   );
