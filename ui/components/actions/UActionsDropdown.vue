@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type RowAction = { label: string; title: string; icon: string; to?: string | undefined };
+type RowAction = { label: string; title?: string; icon: string; to?: string | undefined };
 const props = defineProps<{ actions: Record<string, RowAction> }>();
 const emit = defineEmits<{ (event: "refetch"): void }>();
 
@@ -33,7 +33,7 @@ const onSuccess = () => {
     </slot>
   </UDropdown>
   <template v-for="(action, key) in actions" :key="key">
-    <UActionModal v-if="isShowing(key)" :title="action.title" @close="onClose">
+    <UActionModal v-if="isShowing(key)" :title="action.title || action.label" @close="onClose">
       <slot :name="`${key}-action`" :on-close="onClose" :on-success="onSuccess" />
     </UActionModal>
   </template>
