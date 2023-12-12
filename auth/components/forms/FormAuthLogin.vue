@@ -19,7 +19,7 @@ async function onLoginSubmit(data: AuthLogin) {
 </script>
 
 <template>
-  <UFormWrapper :schema="authLoginSchema" :submit-handler="onLoginSubmit" submit-label="Connexion" @success="$router.push('/')">
+  <UFormWrapper :schema="authLoginSchema" :submit-handler="onLoginSubmit" submit-label="Connexion" :show-cancel="false" @success="$router.push('/')">
     <template #default="{ state }">
       <UFormGroup name="email" label="Courriel">
         <UInput v-model="state.email" type="email" />

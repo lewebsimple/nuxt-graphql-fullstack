@@ -15,5 +15,5 @@ async function onLogoutSubmit() {
 </script>
 
 <template>
-  <UFormWrapper :submit-handler="onLogoutSubmit" submit-label="Déconnexion" @success="$router.push('/')" />
+  <UFormWrapper :submit-handler="onLogoutSubmit" submit-label="Déconnexion" :show-cancel="false" @success="$router.push('/')" />
 </template>

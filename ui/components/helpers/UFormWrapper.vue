@@ -10,12 +10,14 @@ const props = withDefaults(
     defaultState?: FormState;
     submitLabel?: string;
     submitColor?: string;
+    showCancel?: boolean;
   }>(),
   {
     schema: undefined,
     defaultState: undefined,
     submitLabel: "Sauvegarder",
     submitColor: "primary",
+    showCancel: true,
   },
 );
 const emit = defineEmits<{ (event: "cancel"): void; (event: "success"): void }>();
@@ -52,7 +54,7 @@ function onCancel() {
     <div class="form-wrapper">
       <slot :state="state" />
       <div class="flex justify-end items-center gap-4">
-        <UButton color="white" variant="outline" label="Annuler" @click="onCancel" />
+        <UButton v-if="showCancel" color="white" variant="outline" label="Annuler" @click="onCancel" />
         <UButton
           type="submit"
           :color="isSubmitting ? 'gray' : submitColor"
