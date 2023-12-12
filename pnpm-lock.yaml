@@ -53,6 +53,9 @@ dependencies:
   lucia:
     specifier: ^2.7.4
     version: 2.7.4
+  luxon:
+    specifier: ^3.4.4
+    version: 3.4.4
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -76,6 +79,9 @@ devDependencies:
   '@nuxt/devtools':
     specifier: latest
     version: 1.0.5(nuxt@3.8.2)(vite@4.5.0)
+  '@types/luxon':
+    specifier: ^3.3.7
+    version: 3.3.7
   '@types/node':
     specifier: ^20.10.4
     version: 20.10.4
@@ -3699,6 +3705,10 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/luxon@3.3.7:
+    resolution: {integrity: sha512-gKc9P2d4g5uYwmy4s/MO/yOVPmvHyvzka1YH6i5dM03UrFofHSmgc0D0ymbDRStFWHusk6cwwF6nhLm/ckBbbQ==}
     dev: true
 
   /@types/minimist@1.2.4:
