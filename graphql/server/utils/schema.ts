@@ -5,10 +5,11 @@ import * as appInfo from "~/app/server/types/app-info";
 import * as authUser from "~/auth/server/types/auth-user";
 import * as prisma from "~/graphql/server/types/prisma";
 import * as scalars from "~/graphql/server/types/scalars";
+import { AuthRole } from "~/graphql/utils/graphql";
 
 // Initialize builder
-builder.queryType({ authScopes: { hasAuthRole: "ADMINISTRATOR" } });
-builder.mutationType({ authScopes: { hasAuthRole: "ADMINISTRATOR" } });
+builder.queryType({ authScopes: { hasAuthRole: AuthRole.Administrator } });
+builder.mutationType({ authScopes: { hasAuthRole: AuthRole.Administrator } });
 //builder.subscriptionType({});
 Function.prototype({ appInfo, authUser, prisma, scalars });
 

@@ -1,4 +1,4 @@
-import { type AuthRole } from "@prisma/client";
+import { AuthRole } from "~/graphql/utils/graphql";
 
 export type AuthScopes = {
   public: boolean;
@@ -9,5 +9,5 @@ export type AuthScopes = {
 export const authScopes = async (context: Context) => ({
   public: true,
   isAuthenticated: !!context.session?.user,
-  hasAuthRole: (role: AuthRole) => (context.session?.user ? ["ADMINISTRATOR", role].includes(context.session.user.role) : false),
+  hasAuthRole: (role: AuthRole) => (context.session?.user ? [AuthRole.Administrator, role].includes(context.session.user.role) : false),
 });
