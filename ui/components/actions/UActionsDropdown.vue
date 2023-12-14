@@ -1,21 +1,30 @@
 <script setup lang="ts">
-type RowAction = { label: string; title?: string; icon: string; to?: string | undefined };
-const props = defineProps<{ actions: Record<string, RowAction> }>();
+type RowAction = {
+  key: string;
+  label: string;
+  icon: string;
+  title?: string;
+  click?: () => Promise<void>;
+  to?: string | undefined;
+};
+const props = defineProps<{ actions: RowAction[][] }>();
 const emit = defineEmits<{ (event: "refetch"): void }>();
 
-const items = computed(() => [
-  Object.entries(props.actions).map(([key, action]) => ({
+const items = props.actions.map((actionGroup) =>
+  actionGroup.map((action) => ({
     label: action.label,
     icon: action.icon,
-    click: () => {
-      if (action.to) {
+    click: async () => {
+      if (action.click) {
+        await action.click();
+      } else if (action.to) {
         useRouter().push(action.to);
       } else {
-        currentAction.value = key;
+        currentAction.value = action.key;
       }
     },
   })),
-]);
+);
 
 const currentAction = ref<string | null>(null);
 const isShowing = (action: string) => currentAction.value === action;
@@ -32,9 +41,11 @@ const onSuccess = () => {
       <UButton color="white" variant="outline" trailing-icon="i-heroicons-chevron-down" label="Actions" />
     </slot>
   </UDropdown>
-  <template v-for="(action, key) in actions" :key="key">
-    <UActionModal v-if="isShowing(key)" :title="action.title || action.label" @close="onClose">
-      <slot :name="`${key}-action`" :on-close="onClose" :on-success="onSuccess" />
-    </UActionModal>
+  <template v-for="(actionGroup, i) in actions" :key="i">
+    <template v-for="action in actionGroup" :key="action.key">
+      <UActionModal v-if="isShowing(action.key)" :title="action.title || action.label" @close="onClose">
+        <slot :name="`${action.key}-action`" :on-close="onClose" :on-success="onSuccess" />
+      </UActionModal>
+    </template>
   </template>
 </template>

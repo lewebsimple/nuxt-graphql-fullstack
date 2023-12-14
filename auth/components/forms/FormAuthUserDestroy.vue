@@ -6,7 +6,7 @@ const { authUserDestroyMany } = useAuthUserMutations();
 
 async function onAuthUserDestroySubmit() {
   try {
-    const { error } = await authUserDestroyMany({ ids: props.authUsers.map(({ id }) => id) });
+    const { error } = await authUserDestroyMany({ authUserIds: props.authUsers.map(({ id }) => id) });
     if (error) throw new Error(error.message);
     return props.authUsers.length > 1 ? `${props.authUsers.length} utilisateurs supprimés` : `1 utilisateur supprimé`;
   } catch (error) {

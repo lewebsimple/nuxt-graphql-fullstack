@@ -12,7 +12,7 @@ watch([filters, sort], onRefetch, { deep: true });
 </script>
 
 <template>
-  <div class="space-y-4">
+  <div class="space-y-8">
     <div class="flex flex-wrap items-center gap-4">
       <h1 class="h1">Utilisateurs</h1>
       <TheAuthUsersCreate @refetch="onRefetch" />

@@ -1,4 +1,5 @@
 export default defineAppConfig({
+  nuxtIcon: {},
   ui: {
     // Colors
     primary: "indigo",

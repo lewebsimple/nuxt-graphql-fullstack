@@ -2,13 +2,16 @@
 const props = defineProps<{ selected: TheAuthUserFragment[] }>();
 const emit = defineEmits<{ (event: "refetch"): void }>();
 
-const actions = {
-  destroy: {
-    label: "Supprimer",
-    title: "Supprimer les utilisateurs",
-    icon: "i-heroicons-trash",
-  },
-};
+const actions = [
+  [
+    {
+      key: "destroy",
+      label: "Supprimer",
+      title: "Supprimer les utilisateurs",
+      icon: "i-heroicons-trash",
+    },
+  ],
+];
 </script>
 
 <template>

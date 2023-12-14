@@ -18,7 +18,7 @@ const documents = {
     "\n  fragment TheAuthUser on AuthUser {\n    id\n    email\n    role\n  }\n": types.TheAuthUserFragmentDoc,
     "\n      query TheAuthUsers($filters: AuthUserFiltersMany!, $sort: AuthUserSort!, $after: String, $before: String, $first: Int, $last: Int) {\n        authUserFindMany(filters: $filters, sort: $sort, after: $after, before: $before, first: $first, last: $last) {\n          edges {\n            node {\n              ...TheAuthUser\n            }\n          }\n          totalCount\n          pageInfo {\n            ...PageInfo\n          }\n        }\n      }\n    ": types.TheAuthUsersDocument,
     "\n      mutation AuthUserCreate($data: AuthUserCreateInput!) {\n        authUserCreate(data: $data) {\n          ...TheAuthUser\n        }\n      }\n    ": types.AuthUserCreateDocument,
-    "\n      mutation AuthUserDestroyMany($ids: [String!]!) {\n        authUserDestroyMany(authUserIds: $ids)\n      }\n    ": types.AuthUserDestroyManyDocument,
+    "\n      mutation AuthUserDestroyMany($authUserIds: [String!]!) {\n        authUserDestroyMany(authUserIds: $authUserIds)\n      }\n    ": types.AuthUserDestroyManyDocument,
     "\n  fragment PageInfo on PageInfo {\n    hasNextPage\n    hasPreviousPage\n    startCursor\n    endCursor\n  }\n": types.PageInfoFragmentDoc,
 };
 
@@ -59,7 +59,7 @@ export function graphql(source: "\n      mutation AuthUserCreate($data: AuthUser
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      mutation AuthUserDestroyMany($ids: [String!]!) {\n        authUserDestroyMany(authUserIds: $ids)\n      }\n    "): (typeof documents)["\n      mutation AuthUserDestroyMany($ids: [String!]!) {\n        authUserDestroyMany(authUserIds: $ids)\n      }\n    "];
+export function graphql(source: "\n      mutation AuthUserDestroyMany($authUserIds: [String!]!) {\n        authUserDestroyMany(authUserIds: $authUserIds)\n      }\n    "): (typeof documents)["\n      mutation AuthUserDestroyMany($authUserIds: [String!]!) {\n        authUserDestroyMany(authUserIds: $authUserIds)\n      }\n    "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
