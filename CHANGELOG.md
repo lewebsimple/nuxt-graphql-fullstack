@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.2.6
+
+[compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.5...v0.2.6)
+
+### 🚀 Enhancements
+
+- Add showCancel prop to UFormWrapper ([05a54dd](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/05a54dd))
+- UDate component ([0c1e17a](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/0c1e17a))
+- Backport features from real-world project ([fb50abe](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/fb50abe))
+
+### 🩹 Fixes
+
+- Use AuthRole from ~/graphql/utils/graphql ([4274e2e](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/4274e2e))
+- Show users button if isAdministrator ([71e16d5](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/71e16d5))
+
+### 🏡 Chore
+
+- Update deps and set TS version ([a409bc8](https://github.com/lewebsimple/nuxt-graphql-fullstack/commit/a409bc8))
+
+### ❤️ Contributors
+
+- Pascal Martineau <pascal@lewebsimple.ca>
+
 ## v0.2.5
 
 [compare changes](https://github.com/lewebsimple/nuxt-graphql-fullstack/compare/v0.2.4...v0.2.5)
